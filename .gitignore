@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+#ignore github client secret and id
+/config/secrets.yml
+.env
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
