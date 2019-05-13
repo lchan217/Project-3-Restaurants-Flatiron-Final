@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
        session[:user_id] = @user.id
        redirect_to user_path(@user)
      else
-       render :new
+       flash[:notice] = "There was a problem authenticating your password. Please try again. "
+       redirect_to login_path
      end
   end
 
