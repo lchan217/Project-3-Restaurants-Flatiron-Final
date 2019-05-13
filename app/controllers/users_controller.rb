@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/home'
     else
+
       render :new
     end
   end

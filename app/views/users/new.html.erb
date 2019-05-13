@@ -1,4 +1,14 @@
-<h1>Please Sign Up</h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+  <h3>Please correct your form and try again</h3>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br>
 <%= form_for @user, url: signup_path, method: :post do |f| %>
    <%= f.label :name%>
    <%= f.text_field :name %><br>
@@ -6,7 +16,8 @@
    <%= f.label :username%>
    <%= f.text_field :username %><br>
 
-   <%= f.label :password%> 
+   <%= f.label :password%>
    <%= f.password_field :password %><br>
+
    <%= f.submit %>
 <% end %>
