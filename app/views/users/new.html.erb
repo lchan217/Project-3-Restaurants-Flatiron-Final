@@ -1,15 +1,11 @@
 <h1>Please sign up </h1>
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-  <h3>Please correct your form and try again</h3>
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<% if flash[:notice] %>
+    <div id="error_explanation"><% flash[:notice].each do |message|%>
+      <%= message %><br>
     <% end %>
-  </ul>
-<% end %>
+<% end %></div>
 
-<br>
+
 <%= form_for @user, url: signup_path, method: :post do |f| %>
    <%= f.label :name%>
    <%= f.text_field :name %><br>
