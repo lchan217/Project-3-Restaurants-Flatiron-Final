@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
-  get '/home' => 'users#home'
+  get '/user' => 'users#show'
 end
