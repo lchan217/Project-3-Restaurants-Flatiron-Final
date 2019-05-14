@@ -34,3 +34,9 @@ restaurant2.items << [item1, item3, item10]
 restaurant3.items << [item7, item8, item9]
 restaurant4.items << [item2]
 restaurant5.items << [item5, item6]
+
+restaurant1.save
+restaurant2.save
+restaurant3.save
+restaurant4.save
+restaurant5.save
