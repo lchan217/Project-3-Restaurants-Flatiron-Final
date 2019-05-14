@@ -3,7 +3,7 @@
     <div id="error_explanation"><%= flash[:notice] %></div>
  <% end %>
 
-<%= form_for :user, url: '/auth/:provider/callback', method: :get do |f| %>
+<%= form_for :user, url: '/login', method: :post do |f| %>
    <%= f.label :name%>
    <%= f.text_field :name %><br>
 
@@ -20,4 +20,4 @@
   <%= link_to 'Sign In with Github', '/auth/github' %><br>
 
 <h1>If you are new, please sign up</h1>
-<%= link_to 'Sign Up', '/signup' %> 
+<%= link_to 'Sign Up', '/signup' %>

@@ -1,15 +1,20 @@
 class SessionsController < ApplicationController
   def home
-  end 
+  end
   def new
   end
 
-  def create
+  def github_create
     if auth_hash = request.env["omniauth.auth"]
       @user = User.from_omniauth(auth_hash)
       session[:user_id] = @user.id
       redirect_to welcome_path
     else
+      redirect_to root_path
+    end
+  end
+
+  def create
       @user = User.find_by(username: params[:user][:username])
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
@@ -28,4 +33,3 @@ class SessionsController < ApplicationController
    reset_session
    redirect_to root_path
  end
-end
