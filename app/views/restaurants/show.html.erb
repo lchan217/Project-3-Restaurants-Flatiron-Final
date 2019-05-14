@@ -1,12 +1,9 @@
 <h1><%= @restaurant.name %> </h1>
 <ul>
+  <% byebug %>
   <li>Good for: <%=@restaurant.occasion %> </li>
   <li>Price Range: <%=@restaurant.price_range %> </li>
   <li>Accept reservations: <%=@restaurant.reservations?%> </li>
   <li>Wifi? <%= @restaurant.wifi %> </li>
+  <li><%= @restaurant.location_id %> </li>
 </ul>
-
-Other Locations? 
-<% @restaurant.locations do |l| %>
-  <%= l.name %>
-<% end %>

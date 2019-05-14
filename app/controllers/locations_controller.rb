@@ -21,6 +21,18 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
   end
 
+  def edit
+    @location = Location.find(params[:id])
+  end
+  def update
+    @location = Location.find(params[:id])
+    if @location.update(location_params)
+      redirect_to location_path(@location)
+    else
+      render :edit
+    end
+  end
+
   private
   def location_params
     params.require(:location).permit(:city, :state, :user_id, :restaurant_id)

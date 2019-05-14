@@ -1,6 +1,8 @@
 <h1><%= @location.city_and_state %> </h1>
-<% @location.restaurants.each do |r| %>
-  <%= r.name %>
-<% end %>
+  <%= @location.restaurant.name %>
+
+<br>
+<br>
+
 <%= link_to "Create New Location", new_location_path %><br>
-<%= link_to "Edit Current Location", location_path(@location) %>
+<%= link_to "Edit Current Location", edit_location_path(@location) %>

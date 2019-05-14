@@ -8,7 +8,7 @@
   <%= f.label :restaurant %>
   => Choose from Existing Restaurant:
   <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name %>
-  <br> => Or Create New: 
+  <br> => Or Create New:
   <br>
   <%= f.submit%>
 <% end %>

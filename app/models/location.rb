@@ -7,4 +7,8 @@ class Location < ActiveRecord::Base
   def city_and_state
     self.city + ", " + self.state
   end
+
+  def location
+    Restaurant.find(self.restaurant_id)
+  end
 end
