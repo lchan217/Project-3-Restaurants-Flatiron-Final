@@ -1,0 +1,23 @@
+<%= form_for @item do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :vegetarian? %>
+  <%= f.text_field :vegetarian? %><br>
+
+  <%= f.label :calories %>
+  <%= f.text_field :calories %><br>
+
+  <%= f.label :lunch_special? %>
+  <%= f.text_field :lunch_special? %><br>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %><br>
+
+  <%= f.label :category %>
+  <%= f.text_field :category %><br>
+
+  <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name %>  OR Create new?!
+
+  <%= f.submit %>
+<% end %>

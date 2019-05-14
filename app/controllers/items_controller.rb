@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to item_path
+      redirect_to item_path(@item)
     else
       render :new
     end
@@ -36,6 +36,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :vegetarian?, :calories, :lunch_special, :restaurant_id, :price, :category)
+    params.require(:item).permit(:name, :vegetarian?, :calories, :lunch_special?, :restaurant_id, :price, :category)
   end
 end
