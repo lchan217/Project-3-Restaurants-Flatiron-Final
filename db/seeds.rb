@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+cheese1 = Cheese.create(name: "Gouda",   country: "Netherlands",   firmness: "semi-hard",  texture: "compact,   crumbly,   dense and springy",  animal: "cow)   goat and sheep")
+cheese2 = Cheese.create(name: "Brie",   country: "France",  firmness: "soft",  texture: "buttery,   runny and soft-ripened",  animal: "cow")
+cheese3 = Cheese.create(name: "Gorgonzola", country: "Italy",  firmness: "soft",  texture: "crumbly and firm",  animal: "cow")
+cheese4 = Cheese.create(name: "Manchego",   country: "Spain",  firmness: "semi-soft",  texture: "firm and supple",  animal: "sheep")
+cheese5 = Cheese.create(name: "Cheddar",   country: "England",  firmness: "hard",  texture: "compact and crumbly",  animal: "cow")
+cheese6 = Cheese.create(name: "Provolone",   country: "Italy",  firmness: "semi-hard",  texture: "firm,   grainy and open", animal: "cow")
+cheese7 = Cheese.create(name: "Parmesean",   country: "Italy",  firmness: "hard",  texture: "crystalline,   dense and grainy", animal: "cow")
+cheese8 = Cheese.create(name: "Mozzarella",   country: "Italy",  firmness: "semi-soft",  texture: "springy,   stringy and supple", animal: "cow or water buffalo")
+cheese9 = Cheese.create(name: "Asiago",  country: "Italy",  firmness: "hard",  texture: "compact,   crumbly,   open and smooth", animal: "cow")
+cheese10 = Cheese.create(name: "Cream Havarti",  country: "Denmark",  firmness: "semi-soft",  texture: "smooth",  animal: "cow")
