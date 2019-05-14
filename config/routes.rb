@@ -10,4 +10,12 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
   get '/user' => 'users#show'
+
+  resources :locations
+  resources :restaurants
+  resources :items
+
+  resources :restaurants, only: [:show, :index] do
+    resources :items, only: [:show, :index, :new]
+  end
 end
