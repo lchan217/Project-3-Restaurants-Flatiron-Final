@@ -1,7 +1,7 @@
 #locations
-location1 = Location.create(city: "Cleveland",state: "Ohio")
-location2 = Location.create(city: "Chicago", state: "Illinois")
-location3 = Location.create(city: "NYC", state: "New York")
+location1 = Location.create(city: "Cleveland",state: "Ohio", user_id: 1)
+location2 = Location.create(city: "Chicago", state: "Illinois", user_id: 1)
+location3 = Location.create(city: "NYC", state: "New York", user_id: 1)
 
 #restaurants
 restaurant1 = Restaurant.create(name: "Ben's Pizzeria", occasion: "Casual", price_range: "$", reservations?:0, parking: "Street", wifi: 0)
@@ -23,11 +23,11 @@ item9 = Item.create(name: "Wake and Bacon" , category: "Main Meal" , vegetarian?
 item10 = Item.create(name: "Tomato Soup", category: "Side" , vegetarian?: 1, calories: "400", price: "$3.50")
 
 #assocations
-restaurant1.locations << location3
-restaurant2.locations << location2
-restaurant3.locations << location1
-restaurant4.locations << location2
-restaurant5.locations << location2
+restaurant1.location_id = 3
+restaurant2.location_id = 2
+restaurant3.location_id = 1
+restaurant4.location_id = 2
+restaurant5.location_id = 2
 
 restaurant1.items << [item4]
 restaurant2.items << [item1, item3, item10]

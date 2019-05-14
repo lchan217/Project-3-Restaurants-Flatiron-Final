@@ -1,0 +1,6 @@
+<h1>Your Locations</h1>
+<ul>
+<% @location.each do |location| %>
+  <li> <%= location.city %>, <%= location.state%>  </li>
+<% end %>
+</ul>
