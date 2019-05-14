@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
      user.uid = auth.uid
      user.provider = auth.provider
      user.avatar_url = auth.info.image
-     user.name = auth.info.name
+     user.username = auth.info.name
      user.oauth_token = auth.credentials.token
      user.password = SecureRandom.hex
      user.save!

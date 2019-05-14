@@ -22,4 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# Project-3-Charcuterie-Board
+# Project-3-Restaurants
