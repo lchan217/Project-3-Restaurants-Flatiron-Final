@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
 
-  def current_user
-    session[:user_id].nil? ? nil : User.find(session[:user_id])
-  end
-  
   def welcome
+  end
+
+  #helper methods
+  def current_user
+    @user ||= User.find(session[:user_id]) if logged_in?
+  end
+  def logged_in?
+    !!session[:user_id]
   end
 end
