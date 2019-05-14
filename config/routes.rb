@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  #root 'application#welcome'
 
   # get '/login' => 'sessions#login'
   # post '/login' => 'sessions#create'
@@ -9,6 +8,8 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   delete 'signout', to: 'sessions#destroy', as: 'signout'
   root to: 'sessions#new'
+
+  get '/welcome' => 'application#welcome'
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'

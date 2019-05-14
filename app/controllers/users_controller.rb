@@ -6,15 +6,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to welcome_path
     else
       flash[:notice] = @user.errors.full_messages
       render :new
     end
-  end
-
-  def show
-    @user = User.find_by(id: params[:id])
   end
 
   private

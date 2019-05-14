@@ -17,12 +17,7 @@
 <% end %>
 
 <br>
-<% if current_user.blank? %>
   <%= link_to 'Sign In with Github', '/auth/github' %><br>
-<% else %>
-  <p>
-    You are signed in as <%= current_user.username %>.  Click the button below to sign out.
-  </p>
 
-  <%= button_to "Sign Out", signout_path, method: :delete %>
-<% end %>
+<h1>If you are new, please sign up</h1>
+<%= link_to 'Sign Up', '/signup' %> 
