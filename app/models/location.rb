@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
   belongs_to :user
-  has_many :restaurants
+  belongs_to :restaurant 
 
   def city_and_state
     self.city + ", " + self.state
