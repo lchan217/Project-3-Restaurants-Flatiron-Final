@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :boards
-  has_many :cheeses, through: :boards 
+
 
   has_secure_password
 
