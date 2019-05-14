@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
+  has_many :boards 
+
   has_secure_password
 
   validates :username, presence: true
   validates :username, uniqueness: true
+  validates :password, presence: true
 
   def self.from_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|

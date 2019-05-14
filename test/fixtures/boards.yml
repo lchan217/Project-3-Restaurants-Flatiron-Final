@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  size: MyString
+  user_id: 1
+  cheese_id: 1
+  meat_id: 1
+  olive_id: 1
+  cracker_id: 1
+
+two:
+  size: MyString
+  user_id: 1
+  cheese_id: 1
+  meat_id: 1
+  olive_id: 1
+  cracker_id: 1
