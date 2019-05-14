@@ -1,0 +1,3 @@
+class Restaurant < ApplicationRecord
+  has_many :locations 
+end
