@@ -17,11 +17,6 @@
 <%= f.label :occasion %>
 <%= f.text_field :occasion %> <br>
 
-<%= f.label :location, "Select an existing location"%>
-<%= f.collection_select :location_id, Location.all, :id, :city, {:include_blank => ''} %>
-
-<br>Or Create a New Location
-<br>
 <%= f.fields_for :locations do |l| %>
   <%= l.label :city %>
   <%= l.text_field :city %> <br>
