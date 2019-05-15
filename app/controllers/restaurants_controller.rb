@@ -9,6 +9,7 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
+    @restaurant.locations.build
   end
 
   def create
@@ -35,6 +36,6 @@ class RestaurantsController < ApplicationController
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:name, :price_range, :reservations?, :parking, :wifi, :occasion, :location_id)
+    params.require(:restaurant).permit(:name, :price_range, :reservations?, :parking, :wifi, :occasion, :location_id, location_attributes: [:city, :state] )
   end
 end

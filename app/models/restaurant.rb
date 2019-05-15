@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
   has_many :locations
   has_many :items
+  accepts_nested_attributes_for :locations 
 
   def location
     if self.location_id
