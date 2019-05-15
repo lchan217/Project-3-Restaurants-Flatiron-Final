@@ -17,7 +17,7 @@
   <%= f.label :category %>
   <%= f.text_field :category %><br>
 
-  <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name %>
+  <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, selected: @restaurant.id %>
 
   <%= f.submit %>
 <% end %>
