@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if auth_hash = request.env["omniauth.auth"]
       @user = User.from_omniauth(auth_hash)
       session[:user_id] = @user.id
-      redirect_to welcome_path
+      redirect_to restaurants_path
     else
       redirect_to root_path
     end
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       @user = User.find_by(username: params[:user][:username])
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
-        redirect_to welcome_path
+        redirect_to restaurants_path
       elsif @user == nil
         flash[:notice] = "User not found. Please try again."
         redirect_to root_path

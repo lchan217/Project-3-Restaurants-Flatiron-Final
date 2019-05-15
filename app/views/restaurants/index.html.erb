@@ -1,4 +1,6 @@
-<h1>my restaurants</h1>
+<h4>Welcome <%= current_user.username %>! You are successfully logged in.</h4>
+
+<h1>My Restaurants</h1>
 <ol>
 <% @restaurants.each do |r| %>
   <li><%= link_to r.name, restaurant_path(r) %> </li>
@@ -6,5 +8,4 @@
 </ol>
 
 <%=link_to "Create New Restaurant", new_restaurant_path %><br>
-<%= link_to "Back to Home", welcome_path %><br>
 <%= link_to "Log Out", signout_path, method: :delete%>
