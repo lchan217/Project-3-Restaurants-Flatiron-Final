@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if params[:restaurant_id] 
+    if params[:restaurant_id]
       @item = Restaurant.find(params[:restaurant_id]).items.find(params[:id])
     else
       @item = Item.find(params[:id])
