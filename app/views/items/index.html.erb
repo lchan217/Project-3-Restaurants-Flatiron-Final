@@ -4,7 +4,7 @@
   <li><%= link_to i.name, restaurant_item_path(@restaurant, i) %></li>
 <% end %>
 
-<br><%= link_to "Create a New Item", new_item_path %>
+<br><%= link_to "Create a New Item", new_restaurant_item_path(@restaurant) %>
 <br><%= link_to "Back to Restaurants", restaurants_path %>
 <br><%= link_to "Back to Home", welcome_path %>
 <br><%= link_to "Log Out", signout_path %>
