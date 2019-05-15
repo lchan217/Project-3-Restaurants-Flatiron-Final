@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurants = Restaurant.all
+    @restaurants = current_user.restaurants
   end
 
   def show
@@ -10,9 +10,11 @@ class RestaurantsController < ApplicationController
   def new
     @restaurant = Restaurant.new
     @restaurant.locations.build
+    @user = current_user
   end
 
   def create
+    @user = current_user
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
       redirect_to restaurants_path
@@ -41,6 +43,6 @@ class RestaurantsController < ApplicationController
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:name, :price_range, :reservations?, :parking, :wifi, :occasion, :location_id, location_attributes: [:city, :state] )
+    params.require(:restaurant).permit(:name, :price_range, :reservations?, :parking, :wifi, :occasion, :location_id, locations_attributes: [:city, :state, :user_id] )
   end
 end
