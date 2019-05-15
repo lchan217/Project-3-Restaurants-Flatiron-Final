@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    if params[:restaurant_id]
+      @items = Restaurant.find(params[:restaurant_id]).items
+      @restaurant = Restaurant.find(params[:restaurant_id])
+    else
+      @items = Item.all
+    end
   end
 
   def new
@@ -18,7 +23,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    if params[:restaurant_id] 
+      @item = Restaurant.find(params[:restaurant_id]).items.find(params[:id])
+    else
+      @item = Item.find(params[:id])
+    end
   end
 
   def edit
