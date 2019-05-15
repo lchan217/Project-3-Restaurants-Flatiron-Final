@@ -23,6 +23,8 @@
 
   <%= l.label :state %>
   <%= l.text_field :state %>
+
+  <%= l.hidden_field :user_id, :value => @user.id%>
 <% end %>
 
 <%= f.submit %>
