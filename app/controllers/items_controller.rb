@@ -43,6 +43,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    restaurant = Restaurant.find_by(id: item.restaurant_id)
+    item.destroy
+    redirect_to restaurant_items_path(restaurant)
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :vegetarian?, :calories, :lunch_special?, :restaurant_id, :price, :category)
