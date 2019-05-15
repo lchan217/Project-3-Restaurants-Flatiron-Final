@@ -4,7 +4,10 @@
   <li>Price Range: <%=@restaurant.price_range %> </li>
   <li>Accept reservations: <%=@restaurant.reservations%> </li>
   <li>Wifi? <%= @restaurant.wifi? %> </li>
-  <li>Location: <%= @restaurant.location.city_and_state %> </li>
+  <li>Location: <% @restaurant.locations.each do |l| %>
+    <%= l.city_and_state %> 
+    <% end %>
+   </li>
 </ul>
 
 <%= link_to "Back to Restaurants", restaurants_path %> <br>
