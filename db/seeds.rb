@@ -1,7 +1,7 @@
 #locations
-location1 = Location.create(city: "Cleveland",state: "Ohio", user_id: 1)
-location2 = Location.create(city: "Chicago", state: "Illinois", user_id: 1)
-location3 = Location.create(city: "NYC", state: "New York", user_id: 1)
+location1 = Location.create(city: "Cleveland",state: "Ohio", user_id: 1, restaurant_id: 3)
+location2 = Location.create(city: "Chicago", state: "Illinois", user_id: 1, restaurant_id: 2)
+location3 = Location.create(city: "NYC", state: "New York", user_id: 1, restaurant_id: 1)
 
 #restaurants
 restaurant1 = Restaurant.create(name: "Ben's Pizzeria", occasion: "Casual", price_range: "$", reservations?:0, parking: "Street", wifi: 0)
