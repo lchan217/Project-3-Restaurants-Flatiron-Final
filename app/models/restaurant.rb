@@ -24,18 +24,11 @@ class Restaurant < ApplicationRecord
     end
   end
 
- #  def locations_attributes=(locations_attributes)
- #   locations_attributes.values.each do |location_atts|
- #     if location_atts[:city] != "" && location_atts[:state] != ""
- #       self.locations.build(location_atts)
- #     end
- #   end
- # end
-
-  # def location
-  #   if self.location_id
-  #     Location.find(self.location_id)
-  #   end
-  # end
-
+  def city_and_state
+    if self.city == nil || self.city == ""
+      self.state
+    else
+      self.city + ", " + self.state
+    end
+  end
 end
