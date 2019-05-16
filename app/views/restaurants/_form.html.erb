@@ -17,16 +17,17 @@
 <%= f.text_field :price_range %> <br>
 
 <%= f.label :takeS_reservations, "Takes Reservations?" %>
-<%= f.text_field :takeS_reservations %> <br>
+<%= f.select :takeS_reservations, options_for_select(["", "yes", "no"])%> <br>
 
 <%= f.label :parking %>
 <%= f.text_field :parking %> <br>
 
 <%= f.label :wifi, "Wifi?"%>
-<%= f.text_field :wifi %> <br>
+<%= f.select :wifi, options_for_select(["", "yes", "no"])%> <br>
+
 
 <%= f.label :occasion %>
-<%= f.text_field :occasion %> <br>
+<%= f.select :occasion, options_for_select(["", "full meal", "fast food", "casual", "brewery", "small plates", "drinks", "other"])%> <br>
 
 <%= f.fields_for :locations do |l| %>
   <%= l.label :city %>
