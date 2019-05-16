@@ -5,7 +5,7 @@
   <li>Accepts reservations <%=@restaurant.takeS_reservations %> </li>
   <li>Wifi <%= @restaurant.wifi %> </li>
   <li>Location: <% @restaurant.locations.each do |l| %>
-    <%= l.city_and_state %>
+    <%= l.state %>
     <% end %>
    </li>
 </ul>
