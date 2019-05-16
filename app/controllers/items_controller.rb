@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :require_login
+  
   def index
     if params[:restaurant_id]
       @items = Restaurant.find(params[:restaurant_id]).items

@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :require_login
   def index
     @restaurants = current_user.restaurants.uniq
   end
