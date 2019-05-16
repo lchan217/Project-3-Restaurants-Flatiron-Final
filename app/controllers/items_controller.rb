@@ -52,6 +52,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :vegetarian?, :calories, :lunch_special?, :restaurant_id, :price, :category)
+    params.require(:item).permit(:name, :vegetarian?, :calories, :restaurant_id, :price, :category)
   end
 end
