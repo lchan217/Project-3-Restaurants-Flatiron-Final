@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   resources :items
 
   resources :restaurants, only: [:show, :index] do
-    resources :items, only: [:show, :index, :new]
+    resources :items
   end
 end

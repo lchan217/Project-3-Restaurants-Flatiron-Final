@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     if @item.update(item_params)
-      redirect_to item_path(@item)
+      redirect_to restaurant_item_path(@item.restaurant_id, @item)
     else
       render :edit
     end
@@ -52,6 +52,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :vegetarian?, :calories, :restaurant_id, :price, :category)
+    params.require(:item).permit(:name, :vegetarian, :calories, :restaurant_id, :price, :category)
   end
 end
