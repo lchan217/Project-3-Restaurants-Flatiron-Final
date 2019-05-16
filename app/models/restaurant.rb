@@ -8,7 +8,15 @@ class Restaurant < ApplicationRecord
   accepts_nested_attributes_for :locations
 
   def self.with_wifi
-    where(wifi: "yes")
+    self.where(wifi: "yes").order(:name)
+  end
+
+  def self.search(price)
+    if price
+      self.where('PRICE like ?', "%#{price}%")
+    else
+      self.all
+    end
   end
 
  #  def locations_attributes=(locations_attributes)

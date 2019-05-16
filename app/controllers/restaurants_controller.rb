@@ -44,8 +44,8 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end
 
-  def all_with_wifi
-    @restaurants = Restaurant.with_wifi
+  def all_restaurants_in_db
+    @restaurants = Restaurant.all
   end
 
   private
