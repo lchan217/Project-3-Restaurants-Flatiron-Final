@@ -1,21 +1,2 @@
 <h3>Create an Item for <%= @restaurant.name %> </h3>
-<%= form_for @item do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-
-  <%= f.label :vegetarian %>
-  <%= f.text_field :vegetarian %><br>
-
-  <%= f.label :calories %>
-  <%= f.text_field :calories %><br>
-
-  <%= f.label :price %>
-  <%= f.text_field :price %><br>
-
-  <%= f.label :category %>
-  <%= f.text_field :category %><br>
-
-  <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
-
-  <%= f.submit %>
-<% end %>
+<%= render "form" %>

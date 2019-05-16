@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+      @restaurant = Restaurant.find(params[:restaurant_id])
   end
   def update
     @item = Item.find(params[:id])
