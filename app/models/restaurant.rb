@@ -15,7 +15,7 @@ class Restaurant < ApplicationRecord
  #   end
  # end
 
-  def location
+  # def location
   #   if self.location_id
   #     Location.find(self.location_id)
   #   end
