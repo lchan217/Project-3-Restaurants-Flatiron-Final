@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurants = current_user.restaurants
+    @restaurants = current_user.restaurants.uniq
   end
 
   def show
