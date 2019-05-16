@@ -46,8 +46,6 @@ ActiveRecord::Schema.define(version: 2019_05_16_222450) do
     t.string "takeS_reservations"
     t.string "city"
     t.string "state"
-    t.string "rating"
-    t.text "comments"
   end
 
   create_table "users", force: :cascade do |t|
