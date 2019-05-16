@@ -13,9 +13,9 @@ class Restaurant < ApplicationRecord
 
   def self.search(search)
     if search
-      restaurant = Restaurant.find_by(price_range: search)
+      restaurant = Restaurant.find_by(state: search)
       if restaurant
-        self.where(price_range: restaurant.price_range)
+        self.where(state: restaurant.state)
       else
         self.all
       end
