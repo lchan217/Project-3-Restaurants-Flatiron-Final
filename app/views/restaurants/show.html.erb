@@ -2,10 +2,10 @@
 <ul>
   <li>Good for: <%=@restaurant.occasion %> </li>
   <li>Price Range: <%=@restaurant.price_range %> </li>
-  <li>Accept reservations: <%=@restaurant.reservations%> </li>
+  <li>Accept reservations: <%=@restaurant.takes_reservations%> </li>
   <li>Wifi? <%= @restaurant.wifi? %> </li>
   <li>Location: <% @restaurant.locations.each do |l| %>
-    <%= l.city_and_state %> 
+    <%= l.city_and_state %>
     <% end %>
    </li>
 </ul>

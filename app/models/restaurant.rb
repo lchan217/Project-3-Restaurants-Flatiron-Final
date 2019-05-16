@@ -16,16 +16,9 @@ class Restaurant < ApplicationRecord
  # end
 
   def location
-    if self.location_id
-      Location.find(self.location_id)
-    end
-  end
+  #   if self.location_id
+  #     Location.find(self.location_id)
+  #   end
+  # end
 
-  def wifi?
-    self.wifi ? "Yes" : "No"
-  end
-
-  def reservations
-    self.reservations? ? "Yes" : "No"
-  end
 end
