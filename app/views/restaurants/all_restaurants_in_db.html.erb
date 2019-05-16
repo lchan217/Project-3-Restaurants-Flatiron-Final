@@ -1,7 +1,12 @@
 <h2>List of All Restaurants in the Database with Wifi</h2>
 <br>Search by Price Range:
-
-
+<%= form_tag all_restaurants_in_database_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query %><br><br>
+    <%= button_to "Search Restaurant"%>
+    <%= button_to "Clear Filter", all_restaurants_in_database_path, method: :get%>
+  </p>
+<% end %>
 
 
 

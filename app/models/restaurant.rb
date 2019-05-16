@@ -6,14 +6,19 @@ class Restaurant < ApplicationRecord
   validates_presence_of :name, { message: "Name can't be blank"}
 
   accepts_nested_attributes_for :locations
+  #
+  # def self.with_wifi
+  #   self.where(wifi: "yes").order(:name)
+  # end
 
-  def self.with_wifi
-    self.where(wifi: "yes").order(:name)
-  end
-
-  def self.search(price)
-    if price
-      self.where('PRICE like ?', "%#{price}%")
+  def self.search(search)
+    if search
+      restaurant = Restaurant.find_by(price_range: search)
+      if restaurant
+        self.where(price_range: restaurant.price_range)
+      else
+        self.all
+      end
     else
       self.all
     end

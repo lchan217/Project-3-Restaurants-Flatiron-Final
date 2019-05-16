@@ -45,11 +45,12 @@ class RestaurantsController < ApplicationController
   end
 
   def all_restaurants_in_db
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.search(params[:query])
+    render 'all_restaurants_in_db'
   end
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:name, :price_range, :reservations?, :parking, :wifi, :occasion, :takeS_reservations, :location_id, locations_attributes: [:city, :state, :user_id] )
+    params.require(:restaurant).permit(:name, :price_range, :reservations, :query, :parking, :wifi, :occasion, :takeS_reservations, :location_id, locations_attributes: [:city, :state, :user_id] )
   end
 end
