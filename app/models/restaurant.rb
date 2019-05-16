@@ -3,7 +3,7 @@ class Restaurant < ApplicationRecord
   has_many :items
   has_many :users, through: :locations
 
-  validates :name, presence: true 
+  validates_presence_of :name, { message: "Name can't be blank"}
 
   accepts_nested_attributes_for :locations
 
