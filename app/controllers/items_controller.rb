@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to restaurant_item_path(@item.restaurant_id, @item)
     else
+      @restaurant = Restaurant.find(params[:item][:restaurant_id])
       render :new
     end
   end
@@ -32,7 +33,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-      @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
   def update
     @item = Item.find(params[:id])
@@ -40,6 +41,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to restaurant_item_path(@item.restaurant_id, @item)
     else
+      @restaurant = Restaurant.find(params[:item][:restaurant_id])
       render :edit
     end
   end
