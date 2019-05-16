@@ -1,4 +1,5 @@
 List of All Restaurants in the Database with Wifi
+<br> filter for state?
 <% @restaurants.each do |r| %>
   <h4><%= link_to r.name, restaurant_path(r) %> </h4>
   <ul>
@@ -6,6 +7,6 @@ List of All Restaurants in the Database with Wifi
     <li>Parking: <%= r.parking %> </li>
     <li>Good For: <%= r.occasion %> </li>
     <li>Takes Reservations: <%= r.takeS_reservations %> </li>
-    <li> Location: <%=r.locations.last.state %> </li> 
+    <li> Location: <%=r.locations.last.city_and_state %> </li>
   </ul>
 <% end %>
