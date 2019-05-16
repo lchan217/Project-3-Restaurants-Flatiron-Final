@@ -1,0 +1,11 @@
+List of All Restaurants in the Database with Wifi
+<% @restaurants.each do |r| %>
+  <h4><%= link_to r.name, restaurant_path(r) %> </h4>
+  <ul>
+    <li>Price Range: <%= r.price_range %> </li>
+    <li>Parking: <%= r.parking %> </li>
+    <li>Good For: <%= r.occasion %> </li>
+    <li>Takes Reservations: <%= r.takeS_reservations %> </li>
+    <li> Location: <%=r.locations.last.state %> </li> 
+  </ul>
+<% end %>

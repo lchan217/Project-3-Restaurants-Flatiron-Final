@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   get '/user' => 'users#show'
 
+  get '/restaurants_with_wifi' => 'restaurants#all_with_wifi'
+
   resources :locations
   resources :restaurants
   resources :items

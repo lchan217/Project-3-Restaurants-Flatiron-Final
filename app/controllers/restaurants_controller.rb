@@ -43,6 +43,10 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end
 
+  def all_with_wifi
+    @restaurants = Restaurant.with_wifi
+  end
+
   private
   def restaurant_params
     params.require(:restaurant).permit(:name, :price_range, :reservations?, :parking, :wifi, :occasion, :takeS_reservations, :location_id, locations_attributes: [:city, :state, :user_id] )

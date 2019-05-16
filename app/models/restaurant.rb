@@ -7,6 +7,10 @@ class Restaurant < ApplicationRecord
 
   accepts_nested_attributes_for :locations
 
+  def self.with_wifi
+    where(wifi: "yes")
+  end
+
  #  def locations_attributes=(locations_attributes)
  #   locations_attributes.values.each do |location_atts|
  #     if location_atts[:city] != "" && location_atts[:state] != ""
