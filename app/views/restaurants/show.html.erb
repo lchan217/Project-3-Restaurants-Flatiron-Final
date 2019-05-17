@@ -5,6 +5,8 @@
   <li>Accepts reservations? <%=@restaurant.takeS_reservations %> </li>
   <li>Has Wifi? <%= @restaurant.wifi %> </li>
   <li>Location: <%= @restaurant.city_and_state %> </li>
+  <li>Rating (Out of 5): <%= @restaurant.rating %> </li>
+  <li>Comments: <%=@restaurant.comment %> </li>
 </ul>
 
 <%= link_to "View this Restaurant's Items", restaurant_items_path(@restaurant) %><br>

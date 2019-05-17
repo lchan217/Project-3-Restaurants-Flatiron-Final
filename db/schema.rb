@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_16_222450) do
+ActiveRecord::Schema.define(version: 2019_05_17_012939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 2019_05_16_222450) do
     t.integer "restaurant_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.string "stars"
+    t.string "comments"
+    t.integer "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "price_range"
@@ -46,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_05_16_222450) do
     t.string "takeS_reservations"
     t.string "city"
     t.string "state"
+    t.string "rating"
+    t.text "comment"
   end
 
   create_table "users", force: :cascade do |t|
