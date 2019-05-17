@@ -9,7 +9,7 @@
     <%=select_tag :query_existing, options_from_collection_for_select(Restaurant.options, :state, :state, :state), prompt: "Please Select"%>
 
     <br> <br>
-    <%= button_to "Search Restaurant"%>
+    <%= button_to "Search State"%>
     <%= button_to "Clear Filter", all_restaurants_in_database_path, method: :get%>
   </p>
 <% end %>

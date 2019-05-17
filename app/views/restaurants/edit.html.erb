@@ -1,2 +1,46 @@
 <h1>Please edit this restaurant </h1>
-<%= render partial: 'form', locals: {restaurant: @restaurant} %>
+  <% if @restaurant.errors.any? %>
+     <div id="error_explanation">
+       <h2>Unfortunately, there were some errors. Please try again. </h2>
+       <ul>
+         <% @restaurant.errors.messages.each do |message| %>
+           <li><%= message[1].join %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+
+  <%= form_for @restaurant do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br>
+
+  <%= f.label :price_range, "Price Range" %>
+  <%= f.text_field :price_range %> <br>
+
+  <%= f.label :takeS_reservations, "Takes Reservations?" %>
+  <%= f.select :takeS_reservations, options_for_select(["", "Yes", "No"])%> <br>
+
+  <%= f.label :parking %>
+  <%= f.text_field :parking %> <br>
+
+  <%= f.label :wifi, "Wifi?"%>
+  <%= f.select :wifi, options_for_select(["", "Yes", "No"])%> <br>
+
+  <%= f.label :occasion %>
+  <%= f.select :occasion, options_for_select(["", "Full Meal", "Fast Food", "Casual", "Brewery", "Small Plates", "Drinks", "Other"])%> <br>
+
+  <%= f.label :rating, "Rating (Out of 5)" %>
+  <%= f.text_field :rating %> <br>
+
+  <%= f.label :comment %>
+  <%= f.text_field :comment %> <br>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %> <br>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %> <br>
+
+  <%= f.submit %>
+  <% end %>
+  <i> Name and state are required </i>
