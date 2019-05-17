@@ -12,7 +12,6 @@ class RestaurantsController < ApplicationController
   def new
     @restaurant = Restaurant.new
     @restaurant.locations.build
-    @restaurant.locations.build
     @user = current_user
   end
 
@@ -50,16 +49,7 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end
 
-  def all_restaurants_in_db
-    if params[:query_search] && params[:query_existing] == ""
-      @location = Location.search(params[:query_search])
-    elsif params[:query_existing] && params[:query_search] == ""
-      @location = Location.search(params[:query_existing])
-    else
-      @location = Location.all
-    end
-    render 'all_restaurants_in_db'
-  end
+
 
   private
   def restaurant_params
