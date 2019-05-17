@@ -1,2 +1,2 @@
 <h3>Create an Item for <%= @restaurant.name %> </h3>
-<%= render "form" %>
+<%= render partial: 'form', locals: {item: @item} %>
