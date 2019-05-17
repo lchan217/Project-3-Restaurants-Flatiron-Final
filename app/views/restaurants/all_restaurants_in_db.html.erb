@@ -17,5 +17,15 @@
 <%= link_to "Back to My Restaurants", restaurants_path %>
 
 <% @location.each do |l| %>
-  <%= l.state %> 
+  <ul>
+    <h4><%= l.restaurant.name %> </h4>
+    <li>Location: <%= l.city %>, <%= l.state %> </li>
+    <li>Price Range: <%=l.restaurant.price_range %> </li>
+    <li>Wifi: <%=l.restaurant.wifi %> </li>
+    <li>Parking Type:<%=l.restaurant.parking %> </li>
+    <li>Good For: <%=l.restaurant.occasion %> </li>
+    <li>Takes Reservations: <%=l.restaurant.takeS_reservations %> </li>
+    <li>Rating: <%=l.restaurant.rating %> </li>
+    <li>Comment: <%=l.restaurant.comment %> </li>
+  </ul>
 <% end %>
