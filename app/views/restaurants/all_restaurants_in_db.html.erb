@@ -1,11 +1,12 @@
 <h2>List of All Restaurants in the Database with Wifi</h2>
 <br>Search by State:
+<br> <i>Enter a state OR select from existing </i>
 <%= form_tag all_restaurants_in_database_path, method: :get do %>
   <p>
-    Enter State: <%= text_field_tag :query %><br>
+    Enter State: <%= text_field_tag :query_search %><br>
     Or Select Existing State:
 
-    <%=select_tag 'state', options_from_collection_for_select(Restaurant.options, :id, :state)%>
+    <%=select_tag :query_existing, options_from_collection_for_select(Restaurant.options, :state, :state, :state), prompt: "Please Select"%>
 
     <br> <br>
     <%= button_to "Search Restaurant"%>

@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :require_login
-  
+
   def index
     @restaurants = current_user.restaurants.uniq
   end
@@ -51,12 +51,18 @@ class RestaurantsController < ApplicationController
   end
 
   def all_restaurants_in_db
-    @restaurants = Restaurant.search(params[:query])
+    if params[:query_search] && params[:query_existing] == ""
+      @restaurants = Restaurant.search(params[:query_search])
+    elsif params[:query_existing] && params[:query_search] == ""
+      @restaurants = Restaurant.search(params[:query_existing])
+    else
+      @restaurants = Restaurant.all
+    end
     render 'all_restaurants_in_db'
   end
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:name, :price_range, :reservations, :query, :parking, :wifi, :city, :state, :occasion, :takeS_reservations, :location_id, :rating, :comment, locations_attributes: [:city, :state, :user_id])
+    params.require(:restaurant).permit(:name, :price_range, :reservations, :query_search, :query_existing, :parking, :wifi, :city, :state, :occasion, :takeS_reservations, :location_id, :rating, :comment, locations_attributes: [:city, :state, :user_id])
   end
 end
