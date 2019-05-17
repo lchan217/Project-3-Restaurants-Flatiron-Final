@@ -1,4 +1,4 @@
-<h2>List of All Restaurants in the Database with Wifi</h2>
+<h2>List of All Restaurants in the Database</h2>
 <br>Search by State:
 <br> <i>Enter a state OR select from existing </i>
 <%= form_tag all_restaurants_in_database_path, method: :get do %>
@@ -6,7 +6,7 @@
     Enter State: <%= text_field_tag :query_search %><br>
     Or Select Existing State:
 
-    <%=select_tag :query_existing, options_from_collection_for_select(Restaurant.options, :state, :state, :state), prompt: "Please Select"%>
+    <%=select_tag :query_existing, options_from_collection_for_select(Location.options, :state, :state, :state), prompt: "Please Select"%>
 
     <br> <br>
     <%= button_to "Search State"%>
@@ -16,15 +16,6 @@
 
 <%= link_to "Back to My Restaurants", restaurants_path %>
 
-<% @restaurants.each do |r| %>
-  <h4><%= link_to r.name, restaurant_path(r) %> </h4>
-  <ul>
-    <li>Price Range: <%= r.price_range %> </li>
-    <li>Parking: <%= r.parking %> </li>
-    <li>Good For: <%= r.occasion %> </li>
-    <li>Takes Reservations: <%= r.takeS_reservations %> </li>
-    <li> Location: <%=r.city%>, <%= r.state%> (will need to add helper method)  </li>
-    <li>Rating (Out of 5): <%= r.rating %> </li>
-    <li>Comments: <%= r.comment %> </li>
-  </ul>
+<% @location.each do |l| %>
+  <%= l.state %> 
 <% end %>
