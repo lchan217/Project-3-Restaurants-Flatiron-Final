@@ -2,7 +2,10 @@
 <br>Search by State:
 <%= form_tag all_restaurants_in_database_path, method: :get do %>
   <p>
-    <%= text_field_tag :query %><br><br>
+    Enter State: <%= text_field_tag :query %><br>
+    Or Select State: <%= select :restaurant, [Restaurant.existing_states], :state%>
+
+    <br> <br>
     <%= button_to "Search Restaurant"%>
     <%= button_to "Clear Filter", all_restaurants_in_database_path, method: :get%>
   </p>

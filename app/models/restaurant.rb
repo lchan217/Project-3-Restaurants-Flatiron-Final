@@ -6,10 +6,6 @@ class Restaurant < ApplicationRecord
   validates_presence_of :name, { message: "Name can't be blank"}
 
   accepts_nested_attributes_for :locations
-  #
-  # def self.with_wifi
-  #   self.where(wifi: "yes").order(:name)
-  # end
 
   def self.search(search)
     if search
@@ -30,5 +26,14 @@ class Restaurant < ApplicationRecord
     else
       self.city + ", " + self.state
     end
+  end
+
+  def self.existing_states
+    existing = []
+    Restaurant.all.map do |r|
+      existing << r.state
+      existing << r.state
+    end
+    existing.uniq.reject(&:nil?)
   end
 end
