@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Restaurants</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+<style>
+  .nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
+.nav li {
+  float: left;
+}
+
+.nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.wrapper {
+  border-color:  #007bff;
+  border-width: 10px;
+  border-style: solid;
+  margin: 16px auto;
+  max-width: 960px;
+  padding: 2.25%; /* 18px / 800px */
+  width: 85%;
+}
+
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <ul>
+  <li><%=link_to "New Restaurant", new_restaurant_path %> </li>
+  <li><%= link_to "My Restaurants", restaurants_path %> </li>
+  <li><%= link_to "All Restaurants", all_restaurants_in_database_path%> </li>
+  <li style="float:right"><%=link_to "Sign Out", signout_path, method: :delete%> </li>
+</ul>
+</div>
+
+<div class="wrapper">
     <%= yield %>
-  </body>
+
+    <br>  <small>&copy; 2019 <strong>My Restaurants</strong></small>
+</div>
+</body>
 </html>
