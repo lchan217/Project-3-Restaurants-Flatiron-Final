@@ -28,12 +28,7 @@ class Restaurant < ApplicationRecord
     end
   end
 
-  def self.existing_states
-    existing = []
-    Restaurant.all.map do |r|
-      existing << r.state
-      existing << r.state
-    end
-    existing.uniq.reject(&:nil?)
+  def self.options
+    self.select(:state).distinct.order(:state)
   end
 end

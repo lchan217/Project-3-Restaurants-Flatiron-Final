@@ -3,7 +3,9 @@
 <%= form_tag all_restaurants_in_database_path, method: :get do %>
   <p>
     Enter State: <%= text_field_tag :query %><br>
-    Or Select State: <%= select :restaurant, [Restaurant.existing_states], :state%>
+    Or Select Existing State:
+
+    <%=select_tag 'state', options_from_collection_for_select(Restaurant.options, :id, :state)%>
 
     <br> <br>
     <%= button_to "Search Restaurant"%>
