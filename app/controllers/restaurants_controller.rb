@@ -18,6 +18,10 @@ class RestaurantsController < ApplicationController
   def create
     @user = current_user
     @restaurant = Restaurant.new(restaurant_params)
+    #need to refactor somehow
+    @restaurant.city = params[:restaurant][:locations_attributes].values.first.values[0]
+    @restaurant.state = params[:restaurant][:locations_attributes].values.first.values[1]
+
     if @restaurant.save
       redirect_to restaurants_path
     else
@@ -58,6 +62,6 @@ class RestaurantsController < ApplicationController
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:name, :price_range, :reservations, :query_search, :query_existing, :parking, :wifi, :city, :state, :occasion, :takeS_reservations, :location_id, :rating, :comment)
+    params.require(:restaurant).permit(:name, :price_range, :reservations, :query_search, :query_existing, :parking, :wifi, :city, :state, :occasion, :takeS_reservations, :location_id, :rating, :comment, locations_attributes: [:city, :state, :user_id])
   end
 end

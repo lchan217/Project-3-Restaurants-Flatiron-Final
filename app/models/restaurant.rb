@@ -4,7 +4,8 @@ class Restaurant < ApplicationRecord
   has_many :users, through: :locations
 
   validates_presence_of :name, { message: "Name can't be blank"}
-  validates_presence_of :state, { message: "State can't be blank"}
+
+   accepts_nested_attributes_for :locations, reject_if: :all_blank, allow_destroy: true
 
   def self.search(search)
     if search
