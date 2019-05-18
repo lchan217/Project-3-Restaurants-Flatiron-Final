@@ -4,7 +4,7 @@
 <%= form_tag all_restaurants_in_database_path, method: :get do %>
   <p>
     Enter State: <%= text_field_tag :query_search %><br>
-    Or Select Existing State:
+    OR Select Existing State:
 
     <%=select_tag :query_existing, options_from_collection_for_select(Location.options, :state, :state, :state), prompt: "Please Select"%>
 
