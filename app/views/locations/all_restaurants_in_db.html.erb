@@ -1,0 +1,24 @@
+<h2>List of All Restaurants in the Database</h2>
+<br>Search by State:
+<br> <i>Enter a state OR select from existing </i>
+<%= form_tag all_restaurants_in_database_path, method: :get do %>
+  <p>
+    Enter State: <%= text_field_tag :query_search %><br>
+    Or Select Existing State:
+
+    <%=select_tag :query_existing, options_from_collection_for_select(Location.options, :state, :state, :state), prompt: "Please Select"%>
+
+    <br> <br>
+    <%= button_to "Search State"%>
+    <%= button_to "Clear Filter", all_restaurants_in_database_path, method: :get%>
+  </p>
+<% end %>
+
+<%= link_to "Back to My Restaurants", restaurants_path %>
+
+<% @location.each do |l| %>
+  <ul>
+    <h4><%= l.city%> <%=l.state %> </h4>
+    <li><%=link_to l.restaurant.name, restaurant_path(l.restaurant)%> </li>
+  </ul>
+<% end %>

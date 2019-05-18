@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Restaurants</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 <style>
   .nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #C8C8C8;
+  background-color: #F08080;
 }
 
 .nav li {
@@ -24,7 +31,7 @@
 }
 
 .nav li a:hover:not(.active) {
-  background-color: #F08080 ;
+  background-color: #C8C8C8  ;
 }
 
 .wrapper {
@@ -38,7 +45,6 @@
 }
 
 </style>
-</head>
 <body>
 
 <div class="nav">
@@ -52,8 +58,6 @@
 
 <div class="wrapper">
     <%= yield %>
-
-    <br><br>  <small>&copy; 2019 <strong>My Restaurants</strong></small>
 </div>
 </body>
 </html>

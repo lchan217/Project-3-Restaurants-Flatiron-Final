@@ -49,16 +49,7 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end
 
-  def all_restaurants_in_db
-    if params[:query_search] && params[:query_existing] == ""
-      @restaurants = Restaurant.search(params[:query_search])
-    elsif params[:query_existing] && params[:query_search] == ""
-      @restaurants = Restaurant.search(params[:query_existing])
-    else
-      @restaurants = Restaurant.all
-    end
-    render 'all_restaurants_in_db'
-  end
+
 
   private
   def restaurant_params

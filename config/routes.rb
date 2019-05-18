@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   get '/user' => 'users#show'
 
-  get '/all_restaurants_in_database' => 'restaurants#all_restaurants_in_db'
+  get '/all_restaurants_in_database' => 'locations#all_restaurants_in_db'
 
   resources :locations
   resources :restaurants
