@@ -1,6 +1,6 @@
 <h1>Please sign in </h1>
 <% if flash[:notice] %>
-    <div id="error_explanation"><%= flash[:notice] %></div>
+    <%= flash[:notice] %>
  <% end %>
 
 <%= form_for :user, url: '/login', method: :post do |f| %>

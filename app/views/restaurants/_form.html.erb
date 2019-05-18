@@ -1,12 +1,10 @@
 <% if restaurant.errors.any? %>
-   <div id="error_explanation">
      <h2>Unfortunately, there were some errors. Please try again. </h2>
      <ul>
        <% restaurant.errors.messages.each do |message| %>
          <li><%= message[1].join %></li>
        <% end %>
      </ul>
-   </div>
  <% end %>
 
 <%= form_for restaurant do |f| %>

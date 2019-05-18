@@ -1,9 +1,9 @@
 <h1>Please sign up </h1>
 <% if flash[:notice] %>
-    <div id="error_explanation"><% flash[:notice].each do |message|%>
+    <% flash[:notice].each do |message|%>
       <%= message %><br>
     <% end %>
-<% end %></div>
+<% end %>
 
 <%= form_for @user, url: signup_path, method: :post do |f| %>
    <%= f.label :name%>
