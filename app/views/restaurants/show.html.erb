@@ -10,9 +10,14 @@
   <% end %> </li>
   <li>Rating (Out of 5): <%= @restaurant.rating %> </li>
   <li>Comments: <%=@restaurant.comment %> </li>
+  <li>Menu Items: <% @restaurant.items.each do |i| %>
+    <ul>
+      <li><%= i.name %></li>
+    </ul>
+  <% end %> </li>
 </ul>
 
-<%= link_to "View this Restaurant's Items", restaurant_items_path(@restaurant) %><br>
-<%= link_to "Back to Restaurants", restaurants_path %> <br>
+<%= link_to "View All Items to Add More or See Detail", restaurant_items_path(@restaurant)  %><br>
 <%= link_to "Edit this Restaurant", edit_restaurant_path(@restaurant)%><br>
-<%= link_to "Delete this Restaurant", restaurant_path(@restaurant), method: :delete %>
+<%= link_to "Delete this Restaurant", restaurant_path(@restaurant), method: :delete %><br>
+<%= link_to "Back to My Restaurants", restaurants_path %> <br>
