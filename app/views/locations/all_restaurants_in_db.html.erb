@@ -18,7 +18,7 @@
 
 <% @location.each do |l| %>
   <ul>
-    <h4><%= l.city%> <%=l.state %> </h4>
+    <h3><%= l.city_and_state %> </h3>
     <li><%=link_to l.restaurant.name, restaurant_path(l.restaurant)%> </li>
   </ul>
 <% end %>
