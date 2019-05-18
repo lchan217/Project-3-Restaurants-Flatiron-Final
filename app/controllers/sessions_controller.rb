@@ -1,5 +1,10 @@
 class SessionsController < ApplicationController
   def home
+    if @user = current_user
+      redirect_to restaurants_path
+    else
+      render home
+    end 
   end
   def new
   end
