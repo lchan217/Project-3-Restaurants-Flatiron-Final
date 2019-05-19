@@ -1,25 +1,22 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# My Restaurants
 
-Things you may want to cover:
+In this program, users can sign up, log in, and log out of their account. They have the option to sign in using Github as well.  A user can add, edit, and delete restaurants and add, edit, and delete menu items and locations associated with that restaurant. 
 
-* Ruby version
+## Installation
 
-* System dependencies
+    $ fork and clone from https://github.com/lchan217/Project-3-Restaurants
+    $ bundle install
+    $ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start  (if needed)
 
-* Configuration
+## Usage
 
-* Database creation
+Please type "rails s" into the terminal and visit http://localhost:3000/ in a Google Chrome browser.
 
-* Database initialization
+## Contributing
 
-* How to run the test suite
+Bug reports and pull requests are welcome on GitHub at https://github.com/lchan217/Project-3-Restaurants. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-* Services (job queues, cache servers, search engines, etc.)
+## License
 
-* Deployment instructions
-
-* ...
-# Project-3-Restaurants
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
