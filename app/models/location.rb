@@ -18,12 +18,12 @@ class Location < ActiveRecord::Base
     if search
       location = Location.find_by(state: search)
       if location
-        self.where(state: location.state)
+        self.where(state: location.state).order(:city)
       else
-        self.all
+        self.all.order(:city)
       end
     else
-      self.all
+      self.all.order(:city)
     end
   end
 end
