@@ -18,16 +18,16 @@
 <%= f.text_field :price_range %> <br>
 
 <%= f.label :takeS_reservations, "Takes Reservations?" %>
-<%= f.select :takeS_reservations, options_for_select(["", "Yes", "No"])%> <br>
+<%= f.select :takeS_reservations, options_for_select(["", "Yes", "No"], @restaurant.takeS_reservations)%> <br>
 
 <%= f.label :parking %>
 <%= f.text_field :parking %> <br>
 
 <%= f.label :wifi, "Wifi?"%>
-<%= f.select :wifi, options_for_select(["", "Yes", "No"])%> <br>
+<%= f.select :wifi, options_for_select(["", "Yes", "No"], @restaurant.wifi)%> <br>
 
 <%= f.label :occasion %>
-<%= f.select :occasion, options_for_select(["", "Full Meal", "Fast Food", "Casual", "Brewery", "Small Plates", "Drinks", "Other"])%> <br>
+<%= f.select :occasion, options_for_select(["", "Full Meal", "Fast Food", "Casual", "Brewery", "Small Plates", "Drinks", "Other"], @restaurant.occasion)%> <br>
 
 <%= f.label :rating, "Rating (Out of 5)" %>
 <%= f.text_field :rating %> <br>
