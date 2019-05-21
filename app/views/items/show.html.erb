@@ -7,6 +7,8 @@
   <li>Category: <%= @item.category %> </li>
 </ul>
 
+
+<%= link_to "Add Another Item", new_restaurant_item_path(@item.restaurant) %><br>
 <%= link_to "Back to All Items", restaurant_items_path(@item.restaurant) %><br>
 <%= link_to "Edit this Item", edit_restaurant_item_path(@item.restaurant, @item) %><br>
 <%= link_to "Delete this Item", item_path, method: :delete %> <br>
