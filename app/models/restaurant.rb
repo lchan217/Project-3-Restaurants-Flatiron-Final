@@ -7,6 +7,12 @@ class Restaurant < ApplicationRecord
 
   accepts_nested_attributes_for :locations, reject_if: proc { |attributes| attributes[:state].blank? }
 
+
+  def self.most_popular
+    new = self.all.sort_by { |r| r.users.count }
+    new.last.name
+  end
+
   def self.search(search)
     if search
       restaurant = Restaurant.find_by(state: search)
