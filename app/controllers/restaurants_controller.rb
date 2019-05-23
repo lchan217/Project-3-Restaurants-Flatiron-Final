@@ -3,6 +3,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = current_user.restaurants.uniq
+    @popular = Restaurant.most_popular
   end
 
   def show
