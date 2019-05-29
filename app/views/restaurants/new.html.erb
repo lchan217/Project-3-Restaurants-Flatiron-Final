@@ -1,4 +1,4 @@
-<h1><i>Please fill in what you know about your new restaurant</i></h1>
+<h1><i>Please fill in what you know about your restaurant</i></h1>
 
 <% if @restaurant.errors.any? %>
      <h2>Unfortunately, there were some errors. Please try again. </h2>
@@ -7,7 +7,6 @@
          <li><%= message[1].join %></li>
        <% end %>
      </ul>
-   </div>
  <% end %>
 
 <%= form_for @restaurant do |f| %>
