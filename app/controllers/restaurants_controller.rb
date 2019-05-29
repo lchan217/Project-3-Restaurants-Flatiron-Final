@@ -11,7 +11,7 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
-    5.times {@restaurant.locations.build}
+    @restaurant.locations.build
     @user = current_user
   end
 
