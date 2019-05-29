@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
   belongs_to :user, optional: true
   belongs_to :restaurant, optional: true
-  validates_presence_of :name, { message: "Name can't be blank"}
+  validates_presence_of :state, { message: "State can't be blank"}
   #validate :at_least_one
 
   def city_and_state
