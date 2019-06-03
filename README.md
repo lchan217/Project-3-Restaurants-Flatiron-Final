@@ -1,7 +1,7 @@
 
 # My Restaurants
 
-In this program, users can sign up, log in, and log out of their account. They have the option to sign in using Github as well.  A user can add, edit, and delete restaurants and add, edit, and delete menu items and locations associated with that restaurant. 
+In this program, users can sign up, log in, and log out of their account. They have the option to sign in using Github as well.  A user can add, edit, and delete restaurants and add, edit, and delete menu items and locations associated with that restaurant.
 
 ## Installation
 
@@ -11,7 +11,7 @@ In this program, users can sign up, log in, and log out of their account. They h
 
 ## Usage
 
-Please type "rails s" into the terminal and visit http://localhost:3000/ in a Google Chrome browser.
+Visit https://restaurants1000.herokuapp.com/ OR type "rails s" into the terminal and visit http://localhost:3000/ in a Google Chrome browser.
 
 ## Contributing
 
