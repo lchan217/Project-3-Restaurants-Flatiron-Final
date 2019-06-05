@@ -41,11 +41,10 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
+    Location.find_by(restaurant_id: params[:id]).destroy
     Restaurant.find(params[:id]).destroy
     redirect_to restaurants_path
   end
-
-
 
   private
   def restaurant_params
