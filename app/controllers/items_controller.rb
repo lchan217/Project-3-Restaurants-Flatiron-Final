@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :require_login
-  
+
   def index
     if params[:restaurant_id]
       @items = Restaurant.find(params[:restaurant_id]).items
@@ -28,8 +28,10 @@ class ItemsController < ApplicationController
   def show
     if params[:restaurant_id]
       @item = Restaurant.find(params[:restaurant_id]).items.find(params[:id])
+      @restaurant = Restaurant.find(params[:restaurant_id])
     else
       @item = Item.find(params[:id])
+      @restaurant = Restaurant.find(params[:restaurant_id])
     end
   end
 

@@ -4,5 +4,7 @@
   <li><%= link_to i.name, restaurant_item_path(@restaurant, i) %></li>
 <% end %>
 
-<br><%= link_to "Create a New Item", new_restaurant_item_path(@restaurant) %>
+<% if current_user.id == @restaurant.locations.first.user_id %>
+  <br><%= link_to "Create a New Item", new_restaurant_item_path(@restaurant) %>
+<% end %>
 <br><%= link_to "Back to My Restaurants", restaurants_path %>
