@@ -3,10 +3,18 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = current_user.restaurants.uniq
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @restaurants}
+    end
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @restaurant}
+    end
   end
 
   def new
@@ -18,8 +26,12 @@ class RestaurantsController < ApplicationController
   def create
     @user = current_user
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurants = current_user.restaurants.uniq
     if @restaurant.save
-      redirect_to restaurants_path
+      respond_to do |format|
+        format.html {redirect_to restaurants_path}
+        format.json {render json: @restaurants}
+      end
     else
       render :new
     end

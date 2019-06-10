@@ -5,8 +5,13 @@ class ItemsController < ApplicationController
     if params[:restaurant_id]
       @items = Restaurant.find(params[:restaurant_id]).items
       @restaurant = Restaurant.find(params[:restaurant_id])
-    else
-      @items = Item.all
+      respond_to do |format|
+        format.html {render :index}
+        format.json {render json: @items}
+      end
+
+    # else
+    #   @items = Item.all
     end
   end
 
@@ -18,7 +23,12 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to restaurant_item_path(@item.restaurant_id, @item)
+      respond_to do |format|
+        format.html {redirect_to restaurant_item_path(@item.restaurant_id, @item)}
+        format.json {render json: @restaurants}
+      end
+
+      #redirect_to restaurant_item_path(@item.restaurant_id, @item)
     else
       @restaurant = Restaurant.find(params[:item][:restaurant_id])
       render :new
@@ -29,9 +39,13 @@ class ItemsController < ApplicationController
     if params[:restaurant_id]
       @item = Restaurant.find(params[:restaurant_id]).items.find(params[:id])
       @restaurant = Restaurant.find(params[:restaurant_id])
-    else
-      @item = Item.find(params[:id])
-      @restaurant = Restaurant.find(params[:restaurant_id])
+      respond_to do |format|
+        format.html {render :show}
+        format.json {render json: @item}
+      end
+    # else
+    #   @item = Item.find(params[:id])
+    #   @restaurant = Restaurant.find(params[:restaurant_id])
     end
   end
 

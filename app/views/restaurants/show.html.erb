@@ -17,7 +17,8 @@
   <% end %> </li>
 </ul>
 
-<%= link_to "View All Items to See Detail Or Add More If This Is Your Restaurant", restaurant_items_path(@restaurant)  %><br><br>
+<%= link_to "View All Items to See Detail Or Add More", restaurant_items_path(@restaurant)  %><br>
+<i>Please note you can only add or edit if this is under your account.</i><br><br>
 <% if current_user.id == @restaurant.locations.first.user_id %>
   <%= link_to "Edit this Restaurant", edit_restaurant_path(@restaurant)%><br><br>
   <%= link_to "Delete this Restaurant", restaurant_path(@restaurant), method: :delete %><br><br>
