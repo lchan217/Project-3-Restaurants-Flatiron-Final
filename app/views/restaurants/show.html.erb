@@ -12,10 +12,17 @@
   <li>Comments: <%=@restaurant.comment %> </li>
   <li>Menu Items: <% @restaurant.items.each do |i| %>
     <ul>
-      <li><%= i.name %></li>
+      <li><%= i.name %> - <a href="#" class="js-item-detail" data-id="<%= i.id %>" rest-id="<%= @restaurant.id %>">See More Detail</a></li>
     </ul>
   <% end %> </li>
 </ul>
+
+<h2>Specified Menu Item:</h2>
+<div class="itemName"></div>
+<div class="itemVeg"></div>
+<div class="itemCalories"></div>
+<div class="itemPrice"></div>
+<div class="itemCategory"></div><br>
 
 <%= link_to "View All Items to See Detail Or Add More", restaurant_items_path(@restaurant)  %><br>
 <i>Please note you can only add or edit if this is under your account.</i><br><br>
@@ -24,3 +31,19 @@
   <%= link_to "Delete this Restaurant", restaurant_path(@restaurant), method: :delete %><br><br>
 <% end %>
 <%= link_to "Back to My Restaurants", restaurants_path %> <br><br>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $(".js-item-detail").on("click", function(){
+      var restaurantId = parseInt($(".js-item-detail").attr("rest-id"));
+      var id = $(this).data("id");
+      $.getJSON("/restaurants/" + restaurantId + "/items/" + id + ".json", function(data){
+        $(".itemName").text(`Name: ${data["name"]}`);
+        $(".itemVeg").text(`Vegetarian: ${data["vegetarian"]}`);
+        $(".itemCalories").text(`Calories: ${data["calories"]}`);
+        $(".itemPrice").text(`Price: ${data["price"]}`);
+        $(".itemCategory").text(`Category: ${data["category"]}`);
+      });
+    });
+  });
+</script>
