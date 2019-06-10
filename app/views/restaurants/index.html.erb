@@ -5,9 +5,33 @@
   <h1>My Restaurants</h1>
   <ol>
   <% @restaurants.each do |r| %>
-    <li><h3><%= link_to r.name, restaurant_path(r) %></h3> </li>
+    <li><h3><%= link_to r.name, restaurant_path(r) %> - <a href="#" class="js-item-index" data-id="<%= r.id %>">See Menu Items</a></h3> </li>
+
   <% end %>
   </ol>
   <br>
   <%= button_to "Create New Restaurant", new_restaurant_path, method: :get%><br>
 </div>
+
+<h3>Menu Items </h3>
+<div class="itemNames"></div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $(".js-item-index").on("click", function(){
+      var id = $(this).data("id");
+
+      $(".itemNames").empty()
+
+      $.getJSON("/restaurants/" + id + "/items.json", function(data){
+        let collection = data
+        $.each(collection, function(index){
+            $(".itemNames").append(
+                $('<div>')
+                    .text(index+1 + ". " + this.name)
+            );
+        });
+      });
+    });
+  });
+</script>
