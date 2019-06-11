@@ -5,7 +5,11 @@
   <h1>My Restaurants</h1>
   <ol>
   <% @restaurants.each do |r| %>
-    <li><h3><%= link_to r.name, restaurant_path(r) %> - <a href="#" class="js-item-index" data-id="<%= r.id %>">See Menu Items</a></h3> </li>
+    <li><h3><%= link_to r.name, restaurant_path(r) %>
+      <div class="itemNames-<%=r.id%> "></div>
+      <button class="show" data-id="<%= r.id %>">Show Menu Items </button>
+      <button class="hide" data-id="<%= r.id %>">Hide Menu Items </button>
+    </li>
 
   <% end %>
   </ol>
@@ -16,9 +20,10 @@
 <h3>Menu Items </h3>
 <div class="itemNames"></div>
 
+
 <script type="text/javascript" charset="utf-8">
   $(function() {
-    $(".js-item-index").on("click", function(){
+    $(".show").on("click", function(){
       var id = $(this).data("id");
 
       $(".itemNames").empty()
@@ -26,12 +31,20 @@
       $.getJSON("/restaurants/" + id + "/items.json", function(data){
         let collection = data
         $.each(collection, function(index){
-            $(".itemNames").append(
+          let id = this.restaurant.id
+            $(".itemNames-"+id).append(
                 $('<div>')
                     .text(index+1 + ". " + this.name)
             );
         });
       });
+    });
+  });
+
+  $(function() {
+    $(".hide").on("click", function(){
+      var id = $(this).data("id");
+      $(".itemNames-"+id).empty()
     });
   });
 </script>

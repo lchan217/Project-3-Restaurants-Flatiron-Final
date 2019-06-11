@@ -1,3 +1,3 @@
-$(function () {
-	console.log('restaurants.js is loaded ...')
-});
+// $(function () {
+// 	console.log('restaurants.js is loaded ...')
+// });
