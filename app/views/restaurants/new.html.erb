@@ -45,5 +45,29 @@
 <% end %>
 <br>
 
-<%= f.submit %>
+<%= f.submit "submit" %>
 <% end %>
+
+<div id="restResult">
+  <div id="restName"></div>
+  <div id="restRating"></div>
+  <div id="restState"></div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      event.preventDefault();
+
+      var values = $(this).serialize();
+
+      var posting = $.post('/restaurants', values);
+
+      posting.done(function(data) {
+        $("#restName").text(`Name: ${data["name"]}`);
+        $("#restRating").text(`Rating: ${data["rating"]}`);
+        $("#restState").text(`State: ${data["locations"][0].state}`);
+      });
+    });
+  });
+</script>

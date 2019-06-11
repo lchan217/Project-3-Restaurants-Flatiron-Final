@@ -28,10 +28,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurants = current_user.restaurants.uniq
     if @restaurant.save
-      respond_to do |format|
-        format.html {redirect_to restaurants_path}
-        format.json {render json: @restaurants}
-      end
+      render json: @restaurant, status: 201
     else
       render :new
     end
