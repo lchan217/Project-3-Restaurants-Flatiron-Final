@@ -33,7 +33,6 @@
 <%= link_to "Back to My Restaurants", restaurants_path %> <br><br>
 
 <script type="text/javascript" charset="utf-8">
-  $(function() {
     $(".js-item-detail").on("click", function(){
 
       var restaurantId = parseInt($(".js-item-detail").attr("rest-id"));
@@ -47,5 +46,4 @@
         $(".itemCategory").text(`Category: ${data["category"]}`);
       });
     });
-  });
 </script>
