@@ -12,7 +12,7 @@
   <li>Comments: <%=@restaurant.comment %> </li>
   <li>Menu Items: <% @restaurant.items.each do |i| %>
     <ul>
-      <li><%= i.name %> - <a href="#" class="js-item-detail" data-id="<%= i.id %>" item-id="<%= i.id%>" rest-id="<%= @restaurant.id %>">See More Detail</a></li>
+      <li><%= i.name %> - <a href="#" class="js-item-detail" data-id="<%= i.id %>" rest-id="<%= @restaurant.id %>">See More Detail</a></li>
     </ul>
   <% end %> </li>
 </ul>
@@ -38,7 +38,7 @@
 
       var restaurantId = parseInt($(".js-item-detail").attr("rest-id"));
       var id = $(this).data("id");
-      var itemId =parseInt($(".js-item-detail").attr("item-id"));
+
       $.getJSON("/restaurants/" + restaurantId + "/items/" + id + ".json", function(data){
         $(".itemName").text(`Name: ${data["name"]}`);
         $(".itemVeg").text(`Vegetarian: ${data["vegetarian"]}`);
