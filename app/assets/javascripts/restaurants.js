@@ -1,25 +1,23 @@
 $(function () {
 	console.log('restaurants.js is loaded ...')
-  listenForClick()
+  listenForAllItemsClick()
 });
 
-function listenForClick() {
-	$('button#restaurants').on('click', function (event) {
+function listenForAllItemsClick() {
+	$('button#items').on('click', function (event) {
+		$(this).prop('disabled', true);
 		event.preventDefault()
-		getRestaurants()
+		getItems(this.dataset.id)
 	})
 }
 
-function getRestaurants(){
-  $.ajax({
-    url: 'http://localhost:3000/restaurants',
-    method: 'get',
-    dataType: 'json',
-    success: function(data){
-      console.log(data)
-      data.map(restaurant => {
-        document.getElementById('allTheRestaurants').innerHTML += restaurant.name
-      })
-    }
-  })
+function getItems(id){
+	const url = 'http://localhost:3000/restaurants/'+ id + '/items.json'
+  fetch(url)
+	.then(response => response.json())
+	.then(json => {json.map(element =>
+		document.getElementById('allTheItems-'+ id).innerHTML += `<div> ${element.name} </div>`
+		)
+
+	})
 }
