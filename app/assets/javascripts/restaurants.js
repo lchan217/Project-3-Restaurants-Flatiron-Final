@@ -1,6 +1,7 @@
 $(function () {
   listenForAllItemsClick()
 	listenForItemClick()
+	listenForNewRestaurant()
 });
 
 function listenForAllItemsClick() {
@@ -42,4 +43,25 @@ function getItem(id){
 		<div> Calories: ${json.calories} </div>
 		<div> Price: ${json.price} </div>
 		<div> Category: ${json.category} </div>`)
+}
+
+function listenForNewRestaurant(){
+	$('form#new_restaurant').on('click', function (event) {
+		event.preventDefault()
+
+	})
+}
+
+class Restaurant{
+	constructor(obj) {
+		this.id = obj.id
+		this.name = obj.name
+		this.price_range = obj.price_range
+		this.parking = obj.parking
+		this.wifi = obj.wifi
+		this.occasion = obj.occasion
+		this.takeS_reservations = obj.takeS_reservations
+		this.rating = obj.rating
+		this.comment = obj.comment
+	}
 }

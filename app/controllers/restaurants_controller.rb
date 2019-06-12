@@ -27,7 +27,10 @@ class RestaurantsController < ApplicationController
     @user = current_user
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-      redirect_to restaurants_path
+      respond_to do |f|
+        f.html {render :show}
+        f.json {render json: @restaurant}
+      end
     else
       render :new
     end
