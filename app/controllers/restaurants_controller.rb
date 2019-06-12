@@ -21,16 +21,15 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
     @restaurant.locations.build
     @user = current_user
+
   end
 
   def create
     @user = current_user
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurants =  current_user.restaurants.uniq
     if @restaurant.save
-      respond_to do |f|
-        f.html {render :show}
-        f.json {render json: @restaurant}
-      end
+      render json: @restaurant, status: 201
     else
       render :new
     end

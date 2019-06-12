@@ -46,22 +46,49 @@ function getItem(id){
 }
 
 function listenForNewRestaurant(){
-	$('form#new_restaurant').on('click', function (event) {
+	$('#new_restaurant').on('submit', function (event) {
 		event.preventDefault()
-
+		createNewRestaurant()
 	})
 }
 
-class Restaurant{
-	constructor(obj) {
-		this.id = obj.id
-		this.name = obj.name
-		this.price_range = obj.price_range
-		this.parking = obj.parking
-		this.wifi = obj.wifi
-		this.occasion = obj.occasion
-		this.takeS_reservations = obj.takeS_reservations
-		this.rating = obj.rating
-		this.comment = obj.comment
-	}
+function createNewRestaurant(data) {
+	fetch('http://localhost:3000/restaurants.json', {
+	 	method: 'POST',
+		body: JSON.stringify(data)
+	})
+ .then(res => res.json())
+ .then(json => console.log(json));
+}
+
+class Restaurant {
+  constructor(object) {
+    this.name = object.name
+    this.price_range = object.price_range;
+    this.parking = object.parking;
+    this.wifi = object.wifi;
+    this.occasion = object.occasion;
+    this.takeS_reservations = object.takeS_reservations;
+    this.rating = object.rating;
+    this.comment = object.comment;
+		this.city = object.city;
+		this.state = object.state;
+  }
+	 allCaps() {
+    console.log(`${this.name.toUpperCase()}`);
+  }
+}
+
+Restaurant.prototype.newFormat = function(){
+		document.getElementById('NewRestaurantResults').innerHTML +=
+
+						`<div id="restName"> Name: ${this.name} </div>
+						<div id="restPrice"> Price Range: ${this.price_range} </div>
+						<div id="restWifi"> Wifi: ${this.wifi} </div>
+						<div id="restOccasion"> Occasion: ${this.occasion} </div>
+						<div id="restReserves"> Reservations: ${this.takeS_reservations} </div>
+						<div id="restRating"> Rating: ${this.rating} </div>
+						<div id="restComment"> Comment: ${this.comment} </div>
+						<div id="restCity"> City: ${this.city} </div>
+						<div id="restState"> State: ${this.state} </div>`
 }
