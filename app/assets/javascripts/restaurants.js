@@ -1,7 +1,6 @@
   $(function () {
-    $('form').submit(function(event) {
+    $('form#new_restaurant').submit(function(event) {
       event.preventDefault();
-
       var values = $(this).serialize();
 
       var posting = $.post('/restaurants', values);
