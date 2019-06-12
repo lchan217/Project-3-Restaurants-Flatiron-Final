@@ -34,6 +34,10 @@ class ItemsController < ApplicationController
     if params[:restaurant_id]
       @item = Restaurant.find(params[:restaurant_id]).items.find(params[:id])
       @restaurant = Restaurant.find(params[:restaurant_id])
+      respond_to do |f|
+        f.html {render :show}
+        f.json {render json: @item}
+      end
     else
       @item = Item.find(params[:id])
       @restaurant = Restaurant.find(params[:restaurant_id])

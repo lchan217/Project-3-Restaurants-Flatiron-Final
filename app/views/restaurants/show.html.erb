@@ -13,6 +13,9 @@
   <li>Menu Items: <% @restaurant.items.each do |i| %>
     <ul>
       <li><%= i.name %></li>
+      <a href="#" data-id=<%=i.id%> id="show-item">See item detail</a>
+      <div id="itemDetail-<%=i.id%>"></div>
+
     </ul>
   <% end %> </li>
 </ul>

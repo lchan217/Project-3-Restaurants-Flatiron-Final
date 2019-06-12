@@ -1,6 +1,6 @@
 $(function () {
-	console.log('restaurants.js is loaded ...')
   listenForAllItemsClick()
+	listenForItemClick()
 });
 
 function listenForAllItemsClick() {
@@ -20,4 +20,26 @@ function getItems(id){
 		)
 
 	})
+}
+
+function listenForItemClick(){
+	$('a#show-item').on('click', function (event) {
+		event.preventDefault()
+		getItem(this.dataset.id)
+	})
+}
+
+function getItem(id){
+	document.getElementById('itemDetail-'+id).innerHTML = ''
+
+	const path = this.location.pathname
+	const url = 'http://localhost:3000' + path + '/items/' + id + '.json'
+
+	fetch(url)
+	.then(response => response.json())
+	.then(json =>
+	document.getElementById('itemDetail-'+id).innerHTML += `<div> Vegetarian: ${json.vegetarian} </div>
+		<div> Calories: ${json.calories} </div>
+		<div> Price: ${json.price} </div>
+		<div> Category: ${json.category} </div>`)
 }
