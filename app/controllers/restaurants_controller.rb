@@ -11,6 +11,10 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    respond_to do |f|
+			f.html {render :show}
+			f.json {render json: @restaurant}
+		end
   end
 
   def new

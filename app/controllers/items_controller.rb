@@ -5,6 +5,11 @@ class ItemsController < ApplicationController
     if params[:restaurant_id]
       @items = Restaurant.find(params[:restaurant_id]).items
       @restaurant = Restaurant.find(params[:restaurant_id])
+
+      respond_to do |f|
+        f.html {render :index}
+        f.json {render json: @items}
+      end
     else
       @items = Item.all
     end
