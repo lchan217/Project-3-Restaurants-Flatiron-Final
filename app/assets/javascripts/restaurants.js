@@ -52,7 +52,22 @@ function listenForNewRestaurant(){
 	})
 }
 
-function createNewRestaurant(data) {
+function createNewRestaurant() {
+	const name = document.querySelector('#restaurant_name')
+	const price_range =  document.querySelector('#restaurant_price_range')
+	const parking = document.querySelector('#restaurant_parking')
+	const wifi = document.querySelector('#restaurant_wifi')
+	const occasion = document.querySelector('#restaurant_occasion')
+	const takeS_reservations = document.querySelector('#restaurant_takeS_reservations')
+	const rating = document.querySelector('#restaurant_rating')
+	const comment= document.querySelector('#restaurant_comment')
+	const city = document.querySelector('#restaurant_locations_attributes_0_city')
+	const state = document.querySelector('#restaurant_locations_attributes_0_state')
+
+	const data = {
+		body: body.value
+  };
+
 	fetch('http://localhost:3000/restaurants.json', {
 	 	method: 'POST',
 		body: JSON.stringify(data)
