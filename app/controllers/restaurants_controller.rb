@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :require_login
+  skip_before_action :verify_authenticity_token
 
   def index
     @restaurants = current_user.restaurants.uniq
@@ -27,7 +28,6 @@ class RestaurantsController < ApplicationController
   def create
     @user = current_user
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurants =  current_user.restaurants.uniq
     if @restaurant.save
       render json: @restaurant, status: 201
     else

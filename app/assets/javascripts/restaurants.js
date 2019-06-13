@@ -45,35 +45,44 @@ function getItem(id){
 		<div> Category: ${json.category} </div>`)
 }
 
+
 function listenForNewRestaurant(){
-	$('#new_restaurant').on('submit', function (event) {
+	$('button#create_new').on('click', function (event) {
+		$(this).prop('disabled', true);
 		event.preventDefault()
-		createNewRestaurant()
+		let newRestaurantForm = Restaurant.newRestaurantForm()
+		document.querySelector('#new-restaurant-form').innerHTML += newRestaurantForm
 	})
 }
 
-function createNewRestaurant() {
-	const name = document.querySelector('#restaurant_name')
-	const price_range =  document.querySelector('#restaurant_price_range')
-	const parking = document.querySelector('#restaurant_parking')
-	const wifi = document.querySelector('#restaurant_wifi')
-	const occasion = document.querySelector('#restaurant_occasion')
-	const takeS_reservations = document.querySelector('#restaurant_takeS_reservations')
-	const rating = document.querySelector('#restaurant_rating')
-	const comment= document.querySelector('#restaurant_comment')
-	const city = document.querySelector('#restaurant_locations_attributes_0_city')
-	const state = document.querySelector('#restaurant_locations_attributes_0_state')
+document.addEventListener('submit', function(event){
+	event.preventDefault()
+	let newObject = {name: document.querySelector('#restaurant_name').value,
+  price_range:  document.querySelector('#restaurant_price_range').value,
+  takeS_reservations:  document.querySelector('#restaurant_takeS_reservations').value,
+  parking:  document.querySelector('#restaurant_parking').value,
+  wifi:  document.querySelector('#restaurant_wifi').value,
+  occasion:  document.querySelector('#restaurant_occasion').value,
+  rating: document.querySelector('#restaurant_rating').value,
+  comment: document.querySelector('#restaurant_comment').value,
+  city: document.querySelector('#restaurant_locations_attributes_0_city').value,
+  state: document.querySelector('#restaurant_locations_attributes_0_state').value,
+  user_id: document.querySelector('#restaurant_locations_attributes_0_user_id').value,
+}
+  saveRestaurant(newObject)
+})
 
-	const data = {
-		body: body.value
-  };
-
-	fetch('http://localhost:3000/restaurants.json', {
-	 	method: 'POST',
-		body: JSON.stringify(data)
+function saveRestaurant(newObject){
+	fetch('http://localhost:3000/restaurants', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(newObject)
 	})
- .then(res => res.json())
- .then(json => console.log(json));
+	.then(response => response.json())
+	.then(json => console.log(json))
+	let newRestaurant = new Restaurant(newObject);
 }
 
 class Restaurant {
@@ -88,22 +97,35 @@ class Restaurant {
     this.comment = object.comment;
 		this.city = object.city;
 		this.state = object.state;
+    this.user_id = object.user_id;
   }
+
+	static newRestaurantForm() {
+		return (`
+		<strong>New Restaurant</strong>
+		<form id='new_restaurant_form'>​
+		<p>Name: <input type="text" name="name"></p>
+	  <p>Rating: <input type="text" name="rating"></p>
+	  <input type="submit">
+	 </form>
+		`)
+	}
+
 	 allCaps() {
     console.log(`${this.name.toUpperCase()}`);
   }
 }
 
-Restaurant.prototype.newFormat = function(){
-		document.getElementById('NewRestaurantResults').innerHTML +=
-
-						`<div id="restName"> Name: ${this.name} </div>
-						<div id="restPrice"> Price Range: ${this.price_range} </div>
-						<div id="restWifi"> Wifi: ${this.wifi} </div>
-						<div id="restOccasion"> Occasion: ${this.occasion} </div>
-						<div id="restReserves"> Reservations: ${this.takeS_reservations} </div>
-						<div id="restRating"> Rating: ${this.rating} </div>
-						<div id="restComment"> Comment: ${this.comment} </div>
-						<div id="restCity"> City: ${this.city} </div>
-						<div id="restState"> State: ${this.state} </div>`
-}
+//
+// Restaurant.prototype.newFormat = function(){
+// 		document.getElementById('NewRestaurantResults').innerHTML +=
+// 						`<div id="restName"> Name: ${this.name} </div>
+// 						<div id="restPrice"> Price Range: ${this.price_range} </div>
+// 						<div id="restWifi"> Wifi: ${this.wifi} </div>
+// 						<div id="restOccasion"> Occasion: ${this.occasion} </div>
+// 						<div id="restReserves"> Reservations: ${this.takeS_reservations} </div>
+// 						<div id="restRating"> Rating: ${this.rating} </div>
+// 						<div id="restComment"> Comment: ${this.comment} </div>
+// 						<div id="restCity"> City: ${this.city} </div>
+// 						<div id="restState"> State: ${this.state} </div>`
+// }
