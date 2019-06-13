@@ -73,6 +73,8 @@ document.addEventListener('submit', function(event){
 })
 
 function saveRestaurant(newObject){
+
+
 	fetch('http://localhost:3000/restaurants', {
 		method: 'POST',
 		headers: {
@@ -82,7 +84,8 @@ function saveRestaurant(newObject){
 	})
 	.then(response => response.json())
 	.then(json => console.log(json))
-	let newRestaurant = new Restaurant(newObject);
+  let newRestaurant = new Restaurant(newObject);
+  newRestaurant.newFormat()
 }
 
 class Restaurant {
@@ -99,33 +102,18 @@ class Restaurant {
 		this.state = object.state;
     this.user_id = object.user_id;
   }
-
-	static newRestaurantForm() {
-		return (`
-		<strong>New Restaurant</strong>
-		<form id='new_restaurant_form'>​
-		<p>Name: <input type="text" name="name"></p>
-	  <p>Rating: <input type="text" name="rating"></p>
-	  <input type="submit">
-	 </form>
-		`)
-	}
-
-	 allCaps() {
-    console.log(`${this.name.toUpperCase()}`);
-  }
 }
 
-//
-// Restaurant.prototype.newFormat = function(){
-// 		document.getElementById('NewRestaurantResults').innerHTML +=
-// 						`<div id="restName"> Name: ${this.name} </div>
-// 						<div id="restPrice"> Price Range: ${this.price_range} </div>
-// 						<div id="restWifi"> Wifi: ${this.wifi} </div>
-// 						<div id="restOccasion"> Occasion: ${this.occasion} </div>
-// 						<div id="restReserves"> Reservations: ${this.takeS_reservations} </div>
-// 						<div id="restRating"> Rating: ${this.rating} </div>
-// 						<div id="restComment"> Comment: ${this.comment} </div>
-// 						<div id="restCity"> City: ${this.city} </div>
-// 						<div id="restState"> State: ${this.state} </div>`
-// }
+Restaurant.prototype.newFormat = function(){
+  debugger
+		document.querySelector('#formResults').innerHTML +=
+						`<div id="restName"> Name: ${this.name} </div>
+						<div id="restPrice"> Price Range: ${this.price_range} </div>
+						<div id="restWifi"> Wifi: ${this.wifi} </div>
+						<div id="restOccasion"> Occasion: ${this.occasion} </div>
+						<div id="restReserves"> Reservations: ${this.takeS_reservations} </div>
+						<div id="restRating"> Rating: ${this.rating} </div>
+						<div id="restComment"> Comment: ${this.comment} </div>
+						<div id="restCity"> City: ${this.city} </div>
+						<div id="restState"> State: ${this.state} </div>`
+}
