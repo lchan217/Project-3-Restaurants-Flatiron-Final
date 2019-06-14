@@ -1,5 +1,5 @@
 // ============================== index ==============================
-  $(function() {
+  $(function showIndex() {
     $(".show").on("click", function(){
       var id = $(this).data("id");
 
@@ -18,14 +18,14 @@
     });
   });
 
-  $(function() {
+  $(function hideIndex() {
     $(".hide").on("click", function(){
       var id = $(this).data("id");
       $(".itemNames-"+id).empty()
     });
   });
 // ============================== show ==============================
-$(function() {
+$(function showDetail() {
     $(".js-item-detail").on("click", function(){
       var restaurantId = parseInt($(".js-item-detail").attr("rest-id"));
       var id = $(this).data("id");
@@ -42,7 +42,7 @@ $(function() {
   });
 // ============================== create new ==============================
 
-$(function () {
+$(function createNew() {
    $('form#new_restaurant').submit(function(event) {
      event.preventDefault();
      var values = $(this).serialize();
