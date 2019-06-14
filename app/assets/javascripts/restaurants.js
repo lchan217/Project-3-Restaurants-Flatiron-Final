@@ -75,7 +75,17 @@ function createRestaurant(){
   }
     }
   }
-  saveRestaurant(newObject)
+   validateRestaurant(newObject)
+}
+
+function validateRestaurant(newObject){
+  if (newObject.name === "" || newObject.locations_attributes[0].state === "" || newObject.rating ===""){
+    alert("Please refresh page, then fill in name, rating, and state")
+  } else if (newObject.rating > 5 || newObject.rating < 1) {
+      alert("Please refresh page, then a rating between 1 and 5")
+  } else {
+    saveRestaurant(newObject)
+  }
 }
 
 function saveRestaurant(newObject){
@@ -87,7 +97,7 @@ function saveRestaurant(newObject){
 		body: JSON.stringify(newObject)
 	})
 	.then(response => response.json())
-	.then(json => console.log(json))
+	.then(json => console.log('Yay you created a new restaurant!'))
   let newRestaurant = new Restaurant(newObject);
   newRestaurant.newFormat()
 }
@@ -111,6 +121,7 @@ class Restaurant {
 }
 
 Restaurant.prototype.newFormat = function(){
+
 		document.querySelector('#formResults').innerHTML +=
 						`Results:
 
@@ -123,4 +134,5 @@ Restaurant.prototype.newFormat = function(){
 						<div id="restComment"> Comment: ${this.comment} </div>
 						<div id="restCity"> City: ${this.city} </div>
 						<div id="restState"> State: ${this.state} </div>`
+
 }
