@@ -82,7 +82,7 @@ function validateRestaurant(newObject){
   if (newObject.name === "" || newObject.locations_attributes[0].state === "" || newObject.rating ===""){
     alert("Please refresh page, then fill in name, rating, and state")
   } else if (newObject.rating > 5 || newObject.rating < 1) {
-      alert("Please refresh page, then a rating between 1 and 5")
+      alert("Please refresh page and enter details again - rating must be between 1 and 5")
   } else {
     saveRestaurant(newObject)
   }
