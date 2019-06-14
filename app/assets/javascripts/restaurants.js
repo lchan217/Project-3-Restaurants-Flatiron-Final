@@ -1,5 +1,4 @@
 // ============================== index ==============================
-
   $(function() {
     $(".show").on("click", function(){
       var id = $(this).data("id");
@@ -25,9 +24,22 @@
       $(".itemNames-"+id).empty()
     });
   });
-
 // ============================== show ==============================
+$(function() {
+    $(".js-item-detail").on("click", function(){
+      var restaurantId = parseInt($(".js-item-detail").attr("rest-id"));
+      var id = $(this).data("id");
 
+      $.getJSON("/restaurants/" + restaurantId + "/items/" + id + ".json", function(data){
+        $(".moreDetails").text(`More Details:`);
+        $(".itemName").text(`Name: ${data["name"]}`);
+        $(".itemVeg").text(`Vegetarian: ${data["vegetarian"]}`);
+        $(".itemCalories").text(`Calories: ${data["calories"]}`);
+        $(".itemPrice").text(`Price: ${data["price"]}`);
+        $(".itemCategory").text(`Category: ${data["category"]}`);
+      });
+    });
+  });
 // ============================== create new ==============================
 
 $(function () {
