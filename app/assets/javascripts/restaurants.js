@@ -4,9 +4,10 @@ $(function () {
 	listenForNewRestaurant()
 });
 
+// ================================================================
+
 function listenForAllItemsClick() {
 	$('button#items').on('click', function (event) {
-    debugger
 		$(this).prop('disabled', true);
 		event.preventDefault()
 		getItems(this.dataset.id)
@@ -23,6 +24,8 @@ function getItems(id){
 
 	})
 }
+
+// ================================================================
 
 function listenForItemClick(){
 	$('a#show-item').on('click', function (event) {
@@ -46,10 +49,17 @@ function getItem(id){
 		<div> Category: ${json.category} </div>`)
 }
 
+// ================================================================
+
 function listenForNewRestaurant(){
 	$('form#new_restaurant').on('submit', function (event) {
 		$(this).prop('disabled', true);
 		event.preventDefault()
+    createRestaurant()
+	})
+}
+
+function createRestaurant(){
     let newObject = {name: document.querySelector('#restaurant_name').value,
     price_range:  document.querySelector('#restaurant_price_range').value,
     takeS_reservations:  document.querySelector('#restaurant_takeS_reservations').value,
@@ -58,12 +68,14 @@ function listenForNewRestaurant(){
     occasion:  document.querySelector('#restaurant_occasion').value,
     rating: document.querySelector('#restaurant_rating').value,
     comment: document.querySelector('#restaurant_comment').value,
-    city: document.querySelector('#restaurant_locations_attributes_0_city').value,
+
+    locations_attributes: {"0": {city: document.querySelector('#restaurant_locations_attributes_0_city').value,
     state: document.querySelector('#restaurant_locations_attributes_0_state').value,
-    user_id: document.querySelector('#restaurant_locations_attributes_0_user_id').value,
+    user_id: document.querySelector('#restaurant_locations_attributes_0_user_id').value
   }
-    saveRestaurant(newObject)
-	})
+    }
+  }
+  saveRestaurant(newObject)
 }
 
 function saveRestaurant(newObject){
@@ -80,6 +92,8 @@ function saveRestaurant(newObject){
   newRestaurant.newFormat()
 }
 
+// ================================================================
+
 class Restaurant {
   constructor(object) {
     this.name = object.name
@@ -90,9 +104,9 @@ class Restaurant {
     this.takeS_reservations = object.takeS_reservations;
     this.rating = object.rating;
     this.comment = object.comment;
-		this.city = object.city;
-		this.state = object.state;
-    this.user_id = object.user_id;
+    this.state = object.locations_attributes.state
+    this.city = object.locations_attributes.city
+    this.user_id = object.locations_attributes.user_id
   }
 }
 
