@@ -1,3 +1,35 @@
+// ============================== index ==============================
+
+  $(function() {
+    $(".show").on("click", function(){
+      var id = $(this).data("id");
+
+      $(".itemNames").empty()
+
+      $.getJSON("/restaurants/" + id + "/items.json", function(data){
+        let collection = data
+        $.each(collection, function(index){
+          let id = this.restaurant.id
+            $(".itemNames-"+id).append(
+                $('<div>')
+                    .text(index+1 + ". " + this.name)
+            );
+        });
+      });
+    });
+  });
+
+  $(function() {
+    $(".hide").on("click", function(){
+      var id = $(this).data("id");
+      $(".itemNames-"+id).empty()
+    });
+  });
+
+// ============================== show ==============================
+
+// ============================== create new ==============================
+
 $(function () {
    $('form#new_restaurant').submit(function(event) {
      event.preventDefault();
