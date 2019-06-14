@@ -6,6 +6,7 @@ $(function () {
 
 function listenForAllItemsClick() {
 	$('button#items').on('click', function (event) {
+    debugger
 		$(this).prop('disabled', true);
 		event.preventDefault()
 		getItems(this.dataset.id)
@@ -45,36 +46,27 @@ function getItem(id){
 		<div> Category: ${json.category} </div>`)
 }
 
-
 function listenForNewRestaurant(){
-	$('button#create_new').on('click', function (event) {
+	$('form#new_restaurant').on('submit', function (event) {
 		$(this).prop('disabled', true);
 		event.preventDefault()
-		let newRestaurantForm = Restaurant.newRestaurantForm()
-		document.querySelector('#new-restaurant-form').innerHTML += newRestaurantForm
+    let newObject = {name: document.querySelector('#restaurant_name').value,
+    price_range:  document.querySelector('#restaurant_price_range').value,
+    takeS_reservations:  document.querySelector('#restaurant_takeS_reservations').value,
+    parking:  document.querySelector('#restaurant_parking').value,
+    wifi:  document.querySelector('#restaurant_wifi').value,
+    occasion:  document.querySelector('#restaurant_occasion').value,
+    rating: document.querySelector('#restaurant_rating').value,
+    comment: document.querySelector('#restaurant_comment').value,
+    city: document.querySelector('#restaurant_locations_attributes_0_city').value,
+    state: document.querySelector('#restaurant_locations_attributes_0_state').value,
+    user_id: document.querySelector('#restaurant_locations_attributes_0_user_id').value,
+  }
+    saveRestaurant(newObject)
 	})
 }
 
-document.addEventListener('submit', function(event){
-	event.preventDefault()
-	let newObject = {name: document.querySelector('#restaurant_name').value,
-  price_range:  document.querySelector('#restaurant_price_range').value,
-  takeS_reservations:  document.querySelector('#restaurant_takeS_reservations').value,
-  parking:  document.querySelector('#restaurant_parking').value,
-  wifi:  document.querySelector('#restaurant_wifi').value,
-  occasion:  document.querySelector('#restaurant_occasion').value,
-  rating: document.querySelector('#restaurant_rating').value,
-  comment: document.querySelector('#restaurant_comment').value,
-  city: document.querySelector('#restaurant_locations_attributes_0_city').value,
-  state: document.querySelector('#restaurant_locations_attributes_0_state').value,
-  user_id: document.querySelector('#restaurant_locations_attributes_0_user_id').value,
-}
-  saveRestaurant(newObject)
-})
-
 function saveRestaurant(newObject){
-
-
 	fetch('http://localhost:3000/restaurants', {
 		method: 'POST',
 		headers: {
@@ -105,9 +97,10 @@ class Restaurant {
 }
 
 Restaurant.prototype.newFormat = function(){
-  debugger
 		document.querySelector('#formResults').innerHTML +=
-						`<div id="restName"> Name: ${this.name} </div>
+						`Results:
+
+            <div id="restName"> Name: ${this.name} </div>
 						<div id="restPrice"> Price Range: ${this.price_range} </div>
 						<div id="restWifi"> Wifi: ${this.wifi} </div>
 						<div id="restOccasion"> Occasion: ${this.occasion} </div>
