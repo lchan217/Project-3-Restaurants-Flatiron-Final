@@ -41,10 +41,11 @@ $(function showDetail() {
     });
   });
 // ============================== create new ==============================
-
 $(function createNew() {
    $('form#new_restaurant').submit(function(event) {
      event.preventDefault();
+
+     validatesNew()
      var values = $(this).serialize();
      var posting = $.post('/restaurants', values);
 
@@ -52,9 +53,23 @@ $(function createNew() {
              const newRestaurant = new Restaurant({state: data.locations[0].state, city: data.locations[0].city, name: data.name, price_range: data.price_range, parking: data.parking, wifi: data.wifi, occasion: data.occasion, takeS_reservations: data.takeS_reservations, rating: data.rating, comment: data.comment})
      				newRestaurant.newFormat()
               $("#restResult").append($(newRestaurant.newFormat()));
+
     });
   });
 });
+
+function validatesNew() {
+
+  let name = document.querySelector('#restaurant_name').value
+  let rating = document.querySelector('#restaurant_rating').value
+  let state = document.querySelector('#restaurant_locations_attributes_0_state').value
+
+  if (name === "" || rating === "" || state ==="") {
+    alert("Please refresh page, then fill in name, rating, and state. These fields are required.")
+  } else if (rating > 5 || rating < 1) {
+    alert("Please refresh page, then enter a rating between 1 and 5")
+  }
+}
 
 class Restaurant {
   constructor(object) {
