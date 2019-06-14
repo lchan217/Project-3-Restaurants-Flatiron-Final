@@ -104,9 +104,9 @@ class Restaurant {
     this.takeS_reservations = object.takeS_reservations;
     this.rating = object.rating;
     this.comment = object.comment;
-    this.state = object.locations_attributes.state
-    this.city = object.locations_attributes.city
-    this.user_id = object.locations_attributes.user_id
+    this.state = object.locations_attributes[0].state
+    this.city = object.locations_attributes[0].city
+    this.user_id = object.locations_attributes[0].user_id
   }
 }
 

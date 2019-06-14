@@ -3,8 +3,8 @@ class Restaurant < ApplicationRecord
   has_many :items
   has_many :users, through: :locations
 
-  validates_presence_of :name, { message: "Name can't be blank"}
-  validate :rating_not_higher_than_five
+  #validates_presence_of :name, { message: "Name can't be blank"}
+  # validate :rating_not_higher_than_five
 
   accepts_nested_attributes_for :locations #,reject_if: proc { |attributes| attributes[:state].blank? }
 
