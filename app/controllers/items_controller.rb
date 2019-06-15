@@ -23,12 +23,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      respond_to do |format|
-        format.html {redirect_to restaurant_item_path(@item.restaurant_id, @item)}
-        format.json {render json: @restaurants}
-      end
-
-      #redirect_to restaurant_item_path(@item.restaurant_id, @item)
+      render json: @item, status: 201
     else
       @restaurant = Restaurant.find(params[:item][:restaurant_id])
       render :new

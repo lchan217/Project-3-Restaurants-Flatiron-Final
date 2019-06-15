@@ -38,25 +38,23 @@ $(function showDetail() {
       });
     });
   });
-// ============================== create new ==============================
-$(function createNew() {
+// ============================== create new restaurant ==============================
+$(function createNewRestaurant() {
    $('form#new_restaurant').submit(function(event) {
      event.preventDefault();
 
-     validatesNew()
+     validatesNewRestaurant()
      var values = $(this).serialize();
      var posting = $.post('/restaurants', values);
-
      posting.done(function(data){
              const newRestaurant = new Restaurant({state: data.locations[0].state, city: data.locations[0].city, name: data.name, price_range: data.price_range, parking: data.parking, wifi: data.wifi, occasion: data.occasion, takeS_reservations: data.takeS_reservations, rating: data.rating, comment: data.comment})
-     				newRestaurant.newFormat()
               $("#restResult").append($(newRestaurant.newFormat()));
 
     });
   });
 });
 
-function validatesNew() {
+function validatesNewRestaurant() {
 
   let name = document.querySelector('#restaurant_name').value
   let rating = document.querySelector('#restaurant_rating').value
@@ -95,4 +93,49 @@ Restaurant.prototype.newFormat = function(){
 					<div id="restCity"> City: ${this.city} </div>
 					<div id="restState"> State: ${this.state} </div>
 					`
+}
+// ============================== create new item ==============================
+class Item {
+  constructor(object) {
+    this.name = object.name
+    this.vegetarian = object.vegetarian;
+    this.calories = object.calories;
+    this.price = object.price;
+    this.category = object.category;
+    this.restaurant_id = object.restaurant_id
+  }
+}
+
+Item.prototype.newItemFormat = function(){
+	return `<div id="itemName"> Name: ${this.name} </div>
+					<div id="itemVeg"> Vegetarian: ${this.vegetarian} </div>
+					<div id="itemCalories"> Calories: ${this.calories} </div>
+					<div id="itemPrice"> Price: ${this.price} </div>
+					<div id="itemCategory"> Category: ${this.category} </div>`
+}
+
+$(function createNewItem() {
+   $('form#new_item').submit(function(event) {
+     event.preventDefault();
+     validatesNewItem()
+
+     var restId = document.querySelector('#item_restaurant_id').value
+
+     var values = $(this).serialize();
+     var posting = $.post('/restaurants/' + restId + '/items', values);
+     posting.done(function(data){
+
+             const newItem = new Item({name: data.name, vegetarian: data.vegetarian, calories: data.calories, price: data.price, category: data.category})
+
+              $("#itemResult").append($(newItem.newItemFormat()));
+
+    });
+  });
+});
+
+function validatesNewItem() {
+  let name = document.querySelector('#item_name').value
+  if (name === "") {
+    alert("Please refresh page, then fill in the name. This field is required.")
+  }
 }

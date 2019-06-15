@@ -22,28 +22,10 @@
   <% end %> </li>
 </ul>
 
-
-
-<%= link_to "View All Items to See Detail Or Add More", restaurant_items_path(@restaurant)  %><br>
-<i>Please note you can only add or edit if this is under your account.</i><br><br>
-<% if current_user.id == @restaurant.locations.first.user_id %>
+<br><% if current_user.id == @restaurant.locations.first.user_id %>
+  <%= link_to "Add an Item", new_restaurant_item_path(@restaurant)%><br><br>
   <%= link_to "Edit this Restaurant", edit_restaurant_path(@restaurant)%><br><br>
   <%= link_to "Delete this Restaurant", restaurant_path(@restaurant), method: :delete %><br><br>
 <% end %>
 <%= link_to "Back to My Restaurants", restaurants_path %> <br><br>
-<%#
-<script type="text/javascript" charset="utf-8">
-    $(".js-item-detail").on("click", function(){
-
-      var restaurantId = parseInt($(".js-item-detail").attr("rest-id"));
-      var id = $(this).data("id");
-
-      $.getJSON("/restaurants/" + restaurantId + "/items/" + id + ".json", function(data){
-        $(".itemName").text(`Name: ${data["name"]}`);
-        $(".itemVeg").text(`Vegetarian: ${data["vegetarian"]}`);
-        $(".itemCalories").text(`Calories: ${data["calories"]}`);
-        $(".itemPrice").text(`Price: ${data["price"]}`);
-        $(".itemCategory").text(`Category: ${data["category"]}`);
-      });
-    });
-</script> %>
+<%= link_to "Add, View, Edit, Or Delete All Items", restaurant_items_path(@restaurant)  %><br>
