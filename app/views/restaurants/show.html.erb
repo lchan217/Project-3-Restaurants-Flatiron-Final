@@ -6,7 +6,7 @@
   <li>Has Wifi? <%= @restaurant.wifi %> </li>
 
   <li>Location(s): <% @restaurant.locations.each do |l| %>
-    <%= l.city_and_state %>,
+    <%= l.city_and_state %>
   <% end %> </li>
   <li>Rating (Out of 5): <%= @restaurant.rating %> </li>
   <li>Comments: <%=@restaurant.comment %> </li>
