@@ -22,10 +22,9 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
     @restaurant.locations.build
     @user = current_user
-
   end
 
-  def create  
+  def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
       render json: @restaurant, status: 201

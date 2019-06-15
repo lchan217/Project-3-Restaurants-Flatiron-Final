@@ -2,9 +2,10 @@ $(function () {
   listenForAllItemsClick()
 	listenForItemClick()
 	listenForNewRestaurant()
+  listenForNewItem()
 });
 
-// ================================================================
+// ===========================index===========================
 
 function listenForAllItemsClick() {
 	$('button#items').on('click', function (event) {
@@ -25,7 +26,7 @@ function getItems(id){
 	})
 }
 
-// ================================================================
+// ===========================show===========================
 
 function listenForItemClick(){
 	$('a#show-item').on('click', function (event) {
@@ -49,7 +50,7 @@ function getItem(id){
 		<div> Category: ${json.category} </div>`)
 }
 
-// ================================================================
+// ===========================create restaurant===========================
 
 function listenForNewRestaurant(){
 	$('form#new_restaurant').on('submit', function (event) {
@@ -102,8 +103,6 @@ function saveRestaurant(newObject){
   newRestaurant.newFormat()
 }
 
-// ================================================================
-
 class Restaurant {
   constructor(object) {
     this.name = object.name
@@ -134,5 +133,74 @@ Restaurant.prototype.newFormat = function(){
 						<div id="restComment"> Comment: ${this.comment} </div>
 						<div id="restCity"> City: ${this.city} </div>
 						<div id="restState"> State: ${this.state} </div>`
+
+}
+
+//=========================== create item ===========================
+
+function listenForNewItem(){
+	$('form#new_item.new_item').on('submit', function (event) {
+		$(this).prop('disabled', true);
+		event.preventDefault()
+    createItem()
+	})
+}
+
+function createItem(){
+    let newObject = {name: document.querySelector('#item_name').value,
+    vegetarian:  document.querySelector('#item_vegetarian').value,
+    calories:  document.querySelector('#item_calories').value,
+    restaurant_id:  document.querySelector('#item_restaurant_id').value,
+    price:  document.querySelector('#item_price').value,
+    category:  document.querySelector('#item_category').value,
+  }
+   validateItem(newObject)
+
+}
+
+function validateItem(newObject){
+  if (newObject.name === ""){
+    alert("Please refresh page, then fill in name. This is a required field.")
+  } else {
+    saveItem(newObject)
+  }
+}
+
+function saveItem(newObject){
+  let id = newObject.restaurant_id
+	fetch('http://localhost:3000/restaurants/' + id + '/items', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(newObject)
+	})
+	.then(response => response.json())
+	.then(json => console.log('Yay you created a new item!'))
+  let newItem = new Item(newObject);
+  newItem.newItemFormat()
+}
+
+class Item {
+  constructor(object) {
+    this.name = object.name
+    this.vegetarian = object.vegetarian;
+    this.calories = object.calories;
+    this.restaurant_id = object.restaurant_id;
+    this.price = object.price;
+    this.category = object.category;
+  }
+}
+
+Item.prototype.newItemFormat = function(){
+
+		document.querySelector('#itemResults').innerHTML +=
+						`Results:
+
+            <div id="itemName"> Name: ${this.name} </div>
+						<div id="itemVeg"> Vegetarian: ${this.vegetarian} </div>
+						<div id="itemCalories"> Calories: ${this.calories} </div>
+						<div id="itemPrice"> Price: ${this.price} </div>
+						<div id="itemCategory"> Category: ${this.category} </div>`
 
 }

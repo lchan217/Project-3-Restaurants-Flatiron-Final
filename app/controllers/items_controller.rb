@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :require_login
+    skip_before_action :verify_authenticity_token
 
   def index
     if params[:restaurant_id]
@@ -23,7 +24,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to restaurant_item_path(@item.restaurant_id, @item)
+        render json: @item, status: 201
     else
       @restaurant = Restaurant.find(params[:item][:restaurant_id])
       render :new
