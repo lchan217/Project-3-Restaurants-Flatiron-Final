@@ -13,16 +13,16 @@
   <li>Menu Items: <% @restaurant.items.each do |i| %>
     <ul>
       <li><%= i.name %> - <a href="#" class="js-item-detail" data-id="<%= i.id %>" rest-id="<%= @restaurant.id %>">See More Detail</a></li>
+        <div class="itemVeg-<%=i.id%>"></div>
+        <div class="itemCalories-<%=i.id%>"></div>
+        <div class="itemPrice-<%=i.id%>"></div>
+        <div class="itemCategory-<%=i.id%>"></div><br>
+
     </ul>
   <% end %> </li>
 </ul>
 
-<h2 class="moreDetails"> </h2>
-<div class="itemName"></div>
-<div class="itemVeg"></div>
-<div class="itemCalories"></div>
-<div class="itemPrice"></div>
-<div class="itemCategory"></div><br>
+
 
 <%= link_to "View All Items to See Detail Or Add More", restaurant_items_path(@restaurant)  %><br>
 <i>Please note you can only add or edit if this is under your account.</i><br><br>

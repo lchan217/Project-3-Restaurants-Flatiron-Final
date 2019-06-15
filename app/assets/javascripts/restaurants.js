@@ -31,12 +31,10 @@ $(function showDetail() {
       var id = $(this).data("id");
 
       $.getJSON("/restaurants/" + restaurantId + "/items/" + id + ".json", function(data){
-        $(".moreDetails").text(`More Details:`);
-        $(".itemName").text(`Name: ${data["name"]}`);
-        $(".itemVeg").text(`Vegetarian: ${data["vegetarian"]}`);
-        $(".itemCalories").text(`Calories: ${data["calories"]}`);
-        $(".itemPrice").text(`Price: ${data["price"]}`);
-        $(".itemCategory").text(`Category: ${data["category"]}`);
+        $(`.itemVeg-${id}`).text(`Vegetarian: ${data["vegetarian"]}`);
+        $(`.itemCalories-${id}`).text(`Calories: ${data["calories"]}`);
+        $(`.itemPrice-${id}`).text(`Price: ${data["price"]}`);
+        $(`.itemCategory-${id}`).text(`Category: ${data["category"]}`);
       });
     });
   });
