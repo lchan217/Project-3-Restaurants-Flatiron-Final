@@ -17,15 +17,14 @@
         <div class="itemCalories-<%=i.id%>"></div>
         <div class="itemPrice-<%=i.id%>"></div>
         <div class="itemCategory-<%=i.id%>"></div><br>
-
     </ul>
   <% end %> </li>
 </ul>
 
 <br><% if current_user.id == @restaurant.locations.first.user_id %>
-  <%= link_to "Add an Item", new_restaurant_item_path(@restaurant)%><br><br>
+  <%= link_to "Add an Item",  new_restaurant_item_path(@restaurant)%><br><br>
   <%= link_to "Edit this Restaurant", edit_restaurant_path(@restaurant)%><br><br>
   <%= link_to "Delete this Restaurant", restaurant_path(@restaurant), method: :delete %><br><br>
-  <%= link_to "Add, View, Edit, Or Delete All Items", restaurant_items_path(@restaurant)  %><br>
+  <%= link_to "Add, View, Edit, Or Delete All Items", restaurant_items_path(@restaurant)  %><br><br>
 <% end %>
 <%= link_to "Back to My Restaurants", restaurants_path %> <br><br>
