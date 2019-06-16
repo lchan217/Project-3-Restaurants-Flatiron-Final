@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    result = current_user.restaurants.uniq.find{|restaurant| restaurant.id == params[:restaurant_id]}
+    result = current_user.restaurants.uniq.find{|restaurant| restaurant.id} == Restaurant.find(params[:restaurant_id])
     if result
       @item = Item.new
       @restaurant = Restaurant.find(params[:restaurant_id])
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    result = current_user.restaurants.uniq.find{|restaurant| restaurant.id == params[:restaurant_id]}
+    result = current_user.restaurants.uniq.find{|restaurant| restaurant.id} == Restaurant.find(params[:restaurant_id])
     if result
       @item = Item.find(params[:id])
       @restaurant = Restaurant.find(params[:restaurant_id])
