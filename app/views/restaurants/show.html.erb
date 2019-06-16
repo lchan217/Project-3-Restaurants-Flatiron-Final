@@ -14,7 +14,7 @@
     <ul>
       <li><%= link_to i.name, restaurant_item_path(@restaurant, i) %> - <a href="#" class="js-item-detail" data-id="<%= i.id %>" rest-id="<%= @restaurant.id %>">See More Detail</a> -
         <%= link_to "Edit Item", edit_restaurant_item_path(@restaurant, i) %>  -
-        Delete </li>
+        <%= link_to "Delete Item", restaurant_item_path(@restaurant, i), method: :delete%>  </li>
         <div class="itemVeg-<%=i.id%>"></div>
         <div class="itemCalories-<%=i.id%>"></div>
         <div class="itemPrice-<%=i.id%>"></div>

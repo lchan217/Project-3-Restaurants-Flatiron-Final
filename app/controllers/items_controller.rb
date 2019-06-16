@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     if @item.update(item_params)
-      redirect_to restaurant_path(@item.restaurant_id)
+        redirect_to restaurant_path(@item.restaurant_id)
     else
       @restaurant = Restaurant.find(params[:item][:restaurant_id])
       render :edit
@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     restaurant = Restaurant.find_by(id: item.restaurant_id)
     item.destroy
-    redirect_to restaurant_items_path(restaurant)
+    redirect_to restaurant_path(restaurant)
   end
 
   private
