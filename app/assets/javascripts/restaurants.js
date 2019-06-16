@@ -26,9 +26,10 @@
   });
 // ============================== show ==============================
 $(function showDetail() {
-    $(".js-item-detail").on("click", function(){
+    $(".js-item-detail").on("click", function(event){
       var restaurantId = parseInt($(".js-item-detail").attr("rest-id"));
       var id = $(this).data("id");
+      event.preventDefault()
 
       $.getJSON("/restaurants/" + restaurantId + "/items/" + id + ".json", function(data){
         $(`.itemVeg-${id}`).text(`Vegetarian: ${data["vegetarian"]}`);
