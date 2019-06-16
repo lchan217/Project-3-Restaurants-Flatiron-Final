@@ -9,15 +9,18 @@ class ItemsController < ApplicationController
         format.html {render :index}
         format.json {render json: @items}
       end
-
-    # else
-    #   @items = Item.all
     end
   end
 
   def new
-    @item = Item.new
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    result = current_user.restaurants.uniq.find{|restaurant| restaurant.id == params[:restaurant_id]}
+    if result
+      @item = Item.new
+      @restaurant = Restaurant.find(params[:restaurant_id])
+    else
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      redirect_to restaurant_items_path(@restaurant)
+    end
   end
 
   def create
@@ -38,15 +41,18 @@ class ItemsController < ApplicationController
         format.html {render :show}
         format.json {render json: @item}
       end
-    # else
-    #   @item = Item.find(params[:id])
-    #   @restaurant = Restaurant.find(params[:restaurant_id])
     end
   end
 
   def edit
-    @item = Item.find(params[:id])
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    result = current_user.restaurants.uniq.find{|restaurant| restaurant.id == params[:restaurant_id]}
+    if result
+      @item = Item.find(params[:id])
+      @restaurant = Restaurant.find(params[:restaurant_id])
+    else
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      redirect_to restaurant_items_path(@restaurant)
+    end
   end
   def update
     @item = Item.find(params[:id])
