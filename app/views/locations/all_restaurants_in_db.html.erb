@@ -1,15 +1,15 @@
 <h2>List of All Restaurants in the Database</h2>
-<br>Search by State:
-<br> <i>Enter a state OR select from existing </i>
+<h4><u>Search by State:</u></h4>
+
 <%= form_tag all_restaurants_in_database_path, method: :get do %>
   <p>
     Enter State: <%= text_field_tag :query_search %>
-        <%= button_to "Search State"%>
+
     OR Select Existing State:
 
     <%=select_tag :query_existing, options_from_collection_for_select(Location.options, :state, :state, :state), prompt: "Please Select"%>
-
-    <br> <br>
+    <br><br> <%= button_to "Search State"%>
+    <br>
 
     <%= button_to "Clear Filter", all_restaurants_in_database_path, method: :get%>
   </p>
