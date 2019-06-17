@@ -3,13 +3,14 @@
 <br> <i>Enter a state OR select from existing </i>
 <%= form_tag all_restaurants_in_database_path, method: :get do %>
   <p>
-    Enter State: <%= text_field_tag :query_search %><br>
+    Enter State: <%= text_field_tag :query_search %>
+        <%= button_to "Search State"%>
     OR Select Existing State:
 
     <%=select_tag :query_existing, options_from_collection_for_select(Location.options, :state, :state, :state), prompt: "Please Select"%>
 
     <br> <br>
-    <%= button_to "Search State"%>
+
     <%= button_to "Clear Filter", all_restaurants_in_database_path, method: :get%>
   </p>
 <% end %>
