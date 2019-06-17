@@ -8,7 +8,7 @@
 /.bundle
 
 #ignore github client secret and id
-.env
+
 
 # Ignore all logfiles and tempfiles.
 /log/*
