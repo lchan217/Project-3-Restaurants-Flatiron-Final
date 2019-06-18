@@ -15,13 +15,14 @@
   </p>
 <% end %>
 
-<h3><%= @state %> (sorted by city)</h3>
-
-<% @location.each do |l| %>
-  <ul>
-    <li><%=link_to l.restaurant.name, restaurant_path(l.restaurant)%> - <%= l.city_and_state %> </li>
-    <div class="itemNames-<%=l.restaurant.id%> "></div><br>
-    <button class="show" data-id="<%= l.restaurant.id %>">Show Menu Items </button>
-    <button class="hide" data-id="<%= l.restaurant.id %>">Hide Menu Items </button>
-  </ul>
-<% end %>
+<h3><%= @state %></h3>
+<% if @location%>
+    <% @location.each do |l| %>
+      <ul>
+        <li><%=link_to l.restaurant.name, restaurant_path(l.restaurant)%> - <%= l.city_and_state %> </li>
+        <div class="itemNames-<%=l.restaurant.id%> "></div><br>
+        <button class="show" data-id="<%= l.restaurant.id %>">Show Menu Items </button>
+        <button class="hide" data-id="<%= l.restaurant.id %>">Hide Menu Items </button>
+      </ul>
+    <% end %>
+  <% end %>

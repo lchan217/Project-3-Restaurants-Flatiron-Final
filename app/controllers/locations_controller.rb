@@ -4,16 +4,17 @@ class LocationsController < ApplicationController
     if params[:query_search] && params[:query_existing] == ""
       @location = Location.search(params[:query_search])
       if @location.sort_by{|obj| obj.id} == Location.all.sort_by{|obj| obj.id}
-        @state = "State not found - below are all restaurants"
+        @state = "State not found - please try again"
+        @location = nil
       else
-        @state = params[:query_search]
+        @state = params[:query_search] + " (sorted by city)"
       end
     elsif params[:query_existing] && params[:query_search] == ""
       @location = Location.search(params[:query_existing])
-      @state = params[:query_1existing]
+      @state = params[:query_existing] + " (sorted by city)"
     else
       @location = Location.search("all")
-      @state = "All results"
+      @state = "All results (sorted by city)"
     end
     render 'all_restaurants_in_db'
   end
