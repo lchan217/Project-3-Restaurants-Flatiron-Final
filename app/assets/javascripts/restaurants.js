@@ -2,7 +2,7 @@
   $(function showIndex() {
     $(".show").on("click", function(){
       var id = $(this).data("id");
-      $(".itemNames").empty()
+      $(".itemNames-"+id).empty()
 
       $.getJSON("/restaurants/" + id + ".json", function(data){
         let collection = data.items
