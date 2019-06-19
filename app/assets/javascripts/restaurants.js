@@ -6,7 +6,10 @@
 
       $.getJSON("/restaurants/" + id + ".json", function(data){
         let collection = data.items
-        collection.sort((a, b) => (a.name > b.name) ? 1 : -1)
+
+        collection.sort(function (a, b) {
+          return a.name.localeCompare(b.name);
+        });
 
         $.each(collection, function(){
           let itemId = id
