@@ -2,16 +2,17 @@
   $(function showIndex() {
     $(".show").on("click", function(){
       var id = $(this).data("id");
-
       $(".itemNames").empty()
 
-      $.getJSON("/restaurants/" + id + "/items.json", function(data){
-        let collection = data
-        $.each(collection, function(index){
-          let id = this.restaurant.id
-            $(".itemNames-"+id).append(
+      $.getJSON("/restaurants/" + id + ".json", function(data){
+        let collection = data.items
+        collection.sort((a, b) => (a.name > b.name) ? 1 : -1)
+
+        $.each(collection, function(){
+          let itemId = id
+            $(".itemNames-"+itemId).append(
                 $('<div>')
-                    .text(index+1 + ". " + this.name)
+                    .text(this.name)
             );
         });
       });
@@ -135,7 +136,7 @@ $(function createNewItem() {
 });
 
 function validatesNewItem() {
-  let name = $('#item_name')[0].value 
+  let name = $('#item_name')[0].value
   if (name === "") {
     alert("Please refresh page, then fill in the name. This field is required.")
   }
