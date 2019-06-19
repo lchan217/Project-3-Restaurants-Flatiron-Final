@@ -57,9 +57,9 @@ $(function createNewRestaurant() {
 
 function validatesNewRestaurant() {
 
-  let name = document.querySelector('#restaurant_name').value
-  let rating = document.querySelector('#restaurant_rating').value
-  let state = document.querySelector('#restaurant_locations_attributes_0_state').value
+  let name = $('#restaurant_name')[0].value
+  let rating = $('#restaurant_rating')[0].value
+  let state = $('#restaurant_locations_attributes_0_state')[0].value
 
   if (name === "" || rating === "" || state ==="") {
     alert("Please refresh page, then fill in name, rating, and state. These fields are required.")
@@ -135,7 +135,7 @@ $(function createNewItem() {
 });
 
 function validatesNewItem() {
-  let name = document.querySelector('#item_name').value
+  let name = $('#item_name')[0].value 
   if (name === "") {
     alert("Please refresh page, then fill in the name. This field is required.")
   }
