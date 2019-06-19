@@ -11,11 +11,11 @@
           return a.name.localeCompare(b.name);
         });
 
-        $.each(collection, function(){
+        $.each(collection, function(index){
           let itemId = id
             $(".itemNames-"+itemId).append(
                 $('<div>')
-                    .text(this.name)
+                    .text(index+1 + ". " + this.name)
             );
         });
       });
