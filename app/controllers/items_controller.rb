@@ -13,11 +13,13 @@ class ItemsController < ApplicationController
   end
 
   def new
-    if current_user.restaurants.uniq.include?(Restaurant.find(params[:restaurant_id]))
+    result = current_user.restaurants.uniq.find{|restaurant| restaurant.id} == Restaurant.find(params[:restaurant_id])
+    if result
       @item = Item.new
       @restaurant = Restaurant.find(params[:restaurant_id])
     else
-      redirect_to restaurants_path
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      redirect_to restaurant_items_path(@restaurant)
     end
   end
 
@@ -43,11 +45,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user.restaurants.uniq.include?(Restaurant.find(params[:restaurant_id]))
+    result = current_user.restaurants.uniq.find{|restaurant| restaurant.id} == Restaurant.find(params[:restaurant_id])
+    if result
       @item = Item.find(params[:id])
       @restaurant = Restaurant.find(params[:restaurant_id])
     else
-      redirect_to restaurants_path
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      redirect_to restaurant_items_path(@restaurant)
     end
   end
 

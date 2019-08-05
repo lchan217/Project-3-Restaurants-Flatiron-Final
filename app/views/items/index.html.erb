@@ -1,0 +1,12 @@
+<h1> Select an Item to Edit or Delete </h1>
+<h2>Menu Items For <%= @restaurant.name %> </h2>
+<h3><i>Please note you are only able to add, edit, or delete if this restaurant is under your account</i></h3>
+
+<% @items.each do |i| %>
+  <li><%= link_to i.name, restaurant_item_path(@restaurant, i) %></li>
+<% end %>
+
+<% if current_user.id == @restaurant.locations.first.user_id %>
+  <br><%= link_to "Create a New Item", new_restaurant_item_path(@restaurant) %>
+<% end %>
+<br><%= link_to "Back to My Restaurants", restaurants_path %>
