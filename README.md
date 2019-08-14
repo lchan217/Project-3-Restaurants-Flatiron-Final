@@ -9,6 +9,12 @@ In this program, users can sign up, log in, and log out of their account. They h
     $ bundle install
     $ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start  (if needed)
 
+## Demo
+https://www.youtube.com/watch?v=4wTQYPsNjJ8
+
+## Technologies and Frameworks
+Rails, JavaScript, jQuery
+
 ## Usage
 
 Visit https://restaurants1000.herokuapp.com/ OR type "rails s" into the terminal and visit http://localhost:3000/ in a Google Chrome browser.
