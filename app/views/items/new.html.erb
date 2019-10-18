@@ -1,2 +1,7 @@
 <h3>Create an Item for <%= @restaurant.name %> </h3>
 <%= render partial: 'form', locals: {item: @item} %>
+
+<div id="itemResult">
+</div>
+<br>
+<%= link_to "Back to All Items", restaurant_path(@restaurant) %><br>

@@ -5,7 +5,12 @@
   <h1>My Restaurants</h1>
   <ol>
   <% @restaurants.each do |r| %>
-    <li><h3><%= link_to r.name, restaurant_path(r) %></h3> </li>
+    <li><h3><%= link_to r.name, restaurant_path(r) %> - <%= r.locations.first.state %> 
+      <div class="itemNames-<%=r.id%> "></div>
+      <button class="show" data-id="<%= r.id %>">Show Menu Items </button>
+      <button class="hide" data-id="<%= r.id %>">Hide Menu Items </button>
+    </li>
+
   <% end %>
   </ol>
   <br>

@@ -28,17 +28,6 @@ orig= Item.create(name: "Original Tonkotsu", vegetarian: "No", calories: "800", 
 edamame= Item.create(name: "Edamame", vegetarian: "Yes", calories: "300", price: "$4.5", category:"Appetizer")
 wasabi.items << [orig, edamame]
 
-mcds = Restaurant.create(name: "Mcds" , price_range:"$", parking: "Parking lot", wifi: "Yes", occasion: "Fast Food", takeS_reservations:"No", rating: "5", comment: "breakfast is the best" )
-naperville= Location.create(state:"Illinois", city:"Naperville")
-nyc2= Location.create(state:"New York", city:"New York City")
-cleveland3= Location.create(state:"Ohio", city:"Cleveland")
-chicago3= Location.create(state:"Illinois", city:"Chicago")
-mcds.locations << [chicago3, naperville, nyc2, cleveland3]
-egg= Item.create(name: "Egg McMuffin", vegetarian: "No", calories: "300", price: "$4", category:"Main Meal")
-hash= Item.create(name: "Hash Brown", vegetarian: "Yes", calories: "150", price: "$2", category:"Side")
-milkshake= Item.create(name: "Big Mac", vegetarian: "No", calories: "540", price: "$5", category:"Main Meal")
-mcds.items << [egg, hash, milkshake]
-
 portillos = Restaurant.create(name: "Portillos", price_range:"$", parking: "Parking lot" , wifi: "No", occasion: "Casual", takeS_reservations:"No", rating: "5", comment: "excellent hot dogs")
 oswego= Location.create(state:"Illinois", city:"Oswego")
 tempe= Location.create(state:"Arizona", city:"Arizona")
@@ -49,7 +38,7 @@ chocolate= Item.create(name: "Chocolate Cake Shake", vegetarian: "Yes", calories
 fries= Item.create(name: "Cheese Fries" , vegetarian: "Yes", calories: "520", price: "$3", category:"Side")
 portillos.items << [hotdog, chocolate, fries]
 
-lizzie = User.create(name: "Lizzie", username: "Lizzie", password: "1234")
+lizzie = User.create(name: "Lizzie", username: "Lizzie", password: "Lizzie")
 Location.all.each do |l|
   lizzie.locations << l
 end

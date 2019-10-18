@@ -6,20 +6,28 @@
   <li>Has Wifi? <%= @restaurant.wifi %> </li>
 
   <li>Location(s): <% @restaurant.locations.each do |l| %>
-    <%= l.city_and_state %>,
+    <%= l.city_and_state %>
   <% end %> </li>
   <li>Rating (Out of 5): <%= @restaurant.rating %> </li>
   <li>Comments: <%=@restaurant.comment %> </li>
   <li>Menu Items: <% @restaurant.items.each do |i| %>
     <ul>
-      <li><%= i.name %></li>
+      <li><%= i.name %> - <a href="#" class="js-item-detail" data-id="<%= i.id %>" rest-id="<%= @restaurant.id %>">See More Detail</a>
+        <% if current_user.id == @restaurant.locations.first.user_id %>
+          - <%= link_to "Edit Item", edit_restaurant_item_path(@restaurant, i) %>  -
+          <%= link_to "Delete Item", restaurant_item_path(@restaurant, i), method: :delete%>  </li>
+          <% end %>
+        <div class="itemVeg-<%=i.id%>"></div>
+        <div class="itemCalories-<%=i.id%>"></div>
+        <div class="itemPrice-<%=i.id%>"></div>
+        <div class="itemCategory-<%=i.id%>"></div><br>
     </ul>
   <% end %> </li>
 </ul>
 
-<%= link_to "View All Items to See Detail Or Add More If This Is Your Restaurant", restaurant_items_path(@restaurant)  %><br><br>
-<% if current_user.id == @restaurant.locations.first.user_id %>
-  <%= link_to "Edit this Restaurant", edit_restaurant_path(@restaurant)%><br><br>
-  <%= link_to "Delete this Restaurant", restaurant_path(@restaurant), method: :delete %><br><br>
+<br><% if current_user.id == @restaurant.locations.first.user_id %>
+  <%= link_to "Add an Item",  new_restaurant_item_path(@restaurant)%><br><br>
+  <%= link_to "Edit this Restaurant", edit_restaurant_path(@restaurant)%> -
+  <%= link_to "Delete this Restaurant", restaurant_path(@restaurant), method: :delete %> -
 <% end %>
 <%= link_to "Back to My Restaurants", restaurants_path %> <br><br>
