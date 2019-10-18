@@ -4,7 +4,7 @@ class RestaurantsController < ApplicationController
 
   def index
     all_restaurants = current_user.restaurants.uniq
-    @restaurants = all_restaurants.sort_by {|r| r.name}
+    @restaurants = all_restaurants.sort_by {|r| r.name.downcase}
     respond_to do |format|
       format.html {render :index}
       format.json {render json: @restaurants}
