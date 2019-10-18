@@ -3,7 +3,8 @@ class RestaurantsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @restaurants = current_user.restaurants.uniq
+    all_restaurants = current_user.restaurants.uniq
+    @restaurants = all_restaurants.sort_by {|r| r.name}
     respond_to do |format|
       format.html {render :index}
       format.json {render json: @restaurants}
