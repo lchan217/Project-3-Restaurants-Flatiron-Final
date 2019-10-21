@@ -35,14 +35,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if params[:restaurant_id]
-      @item = Restaurant.find(params[:restaurant_id]).items.find(params[:id])
-      @restaurant = Restaurant.find(params[:restaurant_id])
-      respond_to do |format|
-        format.html {render :show}
-        format.json {render json: @item}
-      end
-    end
+    restaurant = Restaurant.find(params[:restaurant_id])
+    redirect_to restaurant_path(restaurant)
   end
 
   def edit
