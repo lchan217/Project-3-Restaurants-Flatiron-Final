@@ -1,11 +1,12 @@
 <br><br><br><br>
 <div style="color: white">
   <h4>Welcome <%= current_user.username %>! You are successfully logged in.</h4>
+  <h3><i>Please note you are only able to add, edit, or delete if restaurants or items are under your account</i></h3>
 
   <h1>My Restaurants</h1>
   <ol>
   <% @restaurants.each do |r| %>
-    <li><h3><%= link_to r.name, restaurant_path(r) %> - <%= r.locations.first.state %> 
+    <li><h3><%= link_to r.name, restaurant_path(r) %> - <%= r.locations.first.state %>
       <div class="itemNames-<%=r.id%> "></div>
       <button class="show" data-id="<%= r.id %>">Show Menu Items </button>
       <button class="hide" data-id="<%= r.id %>">Hide Menu Items </button>

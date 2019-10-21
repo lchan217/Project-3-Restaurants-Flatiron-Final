@@ -1,6 +1,6 @@
 <h1> Select an Item to Edit or Delete </h1>
 <h2>Menu Items For <%= @restaurant.name %> </h2>
-<h3><i>Please note you are only able to add, edit, or delete if this restaurant is under your account</i></h3>
+<h3><i>Please note you are only able to add, edit, or delete if restaurants or items are under your account</i></h3>
 
 <% @items.each do |i| %>
   <li><%= link_to i.name, restaurant_item_path(@restaurant, i) %></li>
