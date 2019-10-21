@@ -6,7 +6,7 @@ class Restaurant < ApplicationRecord
   validates_presence_of :name, { message: "Name can't be blank"}
   validate :rating_not_higher_than_five
 
-  accepts_nested_attributes_for :locations #,reject_if: proc { |attributes| attributes[:state].blank? }
+  accepts_nested_attributes_for :locations
 
   def self.search(search)
     if search

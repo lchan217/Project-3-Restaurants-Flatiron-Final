@@ -2,7 +2,6 @@ class Location < ActiveRecord::Base
   belongs_to :user, optional: true
   belongs_to :restaurant, optional: true
   validates_presence_of :state, { message: "State can't be blank"}
-  #validate :at_least_one
 
   def city_and_state
     if self.city == nil || self.city == ""
@@ -28,11 +27,4 @@ class Location < ActiveRecord::Base
       self.all.order(:city)
     end
   end
-
-  # def at_least_one
-  #   if state == ""
-  #     byebug
-  #     errors.add(:at_least_one, "Must include at least one state")
-  #   end
-  # end
 end
