@@ -13,8 +13,9 @@ class ItemsController < ApplicationController
   end
 
   def new
-    result = current_user.restaurants.uniq.find{|restaurant| restaurant.id} == Restaurant.find(params[:restaurant_id])
-    if result
+    restaurants = current_user.restaurants.uniq
+    result = Restaurant.find(params[:restaurant_id])
+    if restaurants.include?(result)
       @item = Item.new
       @restaurant = Restaurant.find(params[:restaurant_id])
     else
