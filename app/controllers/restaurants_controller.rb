@@ -37,8 +37,14 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    @restaurant = Restaurant.find(params[:id])
-    @user = current_user
+    restaurants = current_user.restaurants.uniq
+    result = restaurants.select { |r|  r.id == params[:id].to_i  }
+    if result == []
+      redirect_to restaurants_path
+    else
+      @restaurant = Restaurant.find(params[:id])
+      @user = current_user
+    end
   end
 
   def update
