@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   def github_create
     if auth_hash = request.env["omniauth.auth"]
-      @user = User.from_omniauth(auth_hash)
+      @user = User.from_github_omniauth(auth_hash)
       session[:user_id] = @user.id
       redirect_to restaurants_path
     else
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   def googleAuth
     # Get access tokens from the google server
     access_token = request.env["omniauth.auth"]
-    user = User.from_omniauth(access_token)
+    user = User.from_google_omniauth(access_token)
     log_in(user)
     # Access_token is used to authenticate request made from the rails application to the google server
     user.google_token = access_token.credentials.token

@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
 
-  def self.from_omniauth(auth)
+  def self.from_github_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
      user.email = auth.info.email
      user.uid = auth.uid
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
    end
  end
 
- def self.from_omniauth(auth)
+ def self.from_google_omniauth(auth)
   # Creates a new user only if it doesn't exist
   where(email: auth.info.email).first_or_initialize do |user|
     user.name = auth.info.name
