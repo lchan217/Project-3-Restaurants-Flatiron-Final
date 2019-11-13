@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "sessions#github_create" #matches route in github you entered
   get 'auth/failure', to: redirect('/')
+  get "auth/:provider/callback", to: "sessions#googleAuth"
+
   get 'signout', to: 'sessions#destroy', as: 'signout'
   root to: 'sessions#home'
   post '/login' => 'sessions#create'
