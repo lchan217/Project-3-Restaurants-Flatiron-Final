@@ -4,31 +4,33 @@ class SessionsController < ApplicationController
       redirect_to restaurants_path
     end
   end
-
   def new
   end
 
   def omni_create
     if auth_hash = request.env["omniauth.auth"]
-      @user_from_github = User.from_github_omniauth(auth_hash)
-      @user_from_google = User.from_google_omniauth(auth_hash)
-      if @user_from_github
-        session[:user_id] = @user_from_github.id
-        redirect_to restaurants_path
-      end
-      if @user_from_google
-        log_in(@user_from_google)
-        @user_from_google.google_token = access_token.credentials.token
-        refresh_token = access_token.credentials.refresh_token
-        @user_from_google.google_refresh_token = refresh_token if refresh_token.present?
-        @user_from_google.save
-        redirect_to restaurants_path
-      end
+      @user = User.from_github_omniauth(auth_hash)
+      session[:user_id] = @user.id
+      redirect_to restaurants_path
     else
       redirect_to root_path
     end
   end
 
+  def googleAuth
+    # Get access tokens from the google server
+    access_token = request.env["omniauth.auth"]
+    user = User.from_google_omniauth(access_token)
+    log_in(user)
+    # Access_token is used to authenticate request made from the rails application to the google server
+    user.google_token = access_token.credentials.token
+    # Refresh_token to request new access_token
+    # Note: Refresh_token is only sent once during the first request
+    refresh_token = access_token.credentials.refresh_token
+    user.google_refresh_token = refresh_token if refresh_token.present?
+    user.save
+    redirect_to root_path
+  end
 
   def create
       @user = User.find_by(username: params[:user][:username])
