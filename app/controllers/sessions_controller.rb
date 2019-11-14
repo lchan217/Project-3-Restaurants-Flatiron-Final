@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
     if auth_hash = request.env["omniauth.auth"]
       @user = User.from_omniauth(auth_hash)
       session[:user_id] = @user.id
+      redirect_to restaurants_path
     else
       redirect_to root_path
     end
