@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :username, presence: true
-  # validates :username, uniqueness: true
+  validates :username, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
 
   def self.from_github_omniauth(auth)
@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
      user.username = auth.info.name
      user.oauth_token = auth.credentials.token
      user.password = SecureRandom.hex
-     user.save!
    end
  end
 

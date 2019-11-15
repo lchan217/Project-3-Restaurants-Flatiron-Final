@@ -10,10 +10,13 @@ class SessionsController < ApplicationController
   def github_create
     if auth_hash = request.env["omniauth.auth"]
       @user = User.from_github_omniauth(auth_hash)
-      session[:user_id] = @user.id
-      redirect_to restaurants_path
-    else
-      redirect_to root_path
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to restaurants_path
+      else
+        flash[:notice] = "Account doesn't exist or is already registered. Please try again."
+        redirect_to root_path
+      end
     end
   end
 
@@ -21,16 +24,19 @@ class SessionsController < ApplicationController
       # Get access tokens from the google server
       if access_token = request.env["omniauth.auth"]
         user = User.from_google_omniauth(access_token)
-        # Access_token is used to authenticate request made from the rails application to the google server
-        user.google_token = access_token.credentials.token
-        # Refresh_token to request new access_token
-        # Note: Refresh_token is only sent once during the first request
-        refresh_token = access_token.credentials.refresh_token
-        user.google_refresh_token = refresh_token if refresh_token.present?
-        user.save
-        redirect_to restaurants_path
-      else
-        redirect_to root_path
+        if user.save
+          # Access_token is used to authenticate request made from the rails application to the google server
+          user.google_token = access_token.credentials.token
+          # Refresh_token to request new access_token
+          # Note: Refresh_token is only sent once during the first request
+          refresh_token = access_token.credentials.refresh_token
+          user.google_refresh_token = refresh_token if refresh_token.present?
+          user.save
+          redirect_to restaurants_path
+        else
+          flash[:notice] = "Account doesn't exist or is already registered. Please try again."
+          redirect_to root_path
+        end
       end
   end
 
