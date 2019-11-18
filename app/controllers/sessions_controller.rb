@@ -10,28 +10,43 @@ class SessionsController < ApplicationController
   def github_create
     if auth_hash = request.env["omniauth.auth"]
       @user = User.from_github_omniauth(auth_hash)
-      session[:user_id] = @user.id
-      redirect_to restaurants_path
-    else
-      redirect_to root_path
+        if @user.save
+        session[:user_id] = @user.id
+        redirect_to restaurants_path
+      else
+        flash[:notice] = 'Username is already taken or registered using another social media account. Please try again.'
+        redirect_to root_path
+      end
     end
   end
 
   def google_create
-      # Get access tokens from the google server
-      if access_token = request.env["omniauth.auth"]
-        user = User.from_google_omniauth(access_token)
-        # Access_token is used to authenticate request made from the rails application to the google server
-        user.google_token = access_token.credentials.token
-        # Refresh_token to request new access_token
-        # Note: Refresh_token is only sent once during the first request
-        refresh_token = access_token.credentials.refresh_token
-        user.google_refresh_token = refresh_token if refresh_token.present?
-        user.save
+    if auth_hash = request.env["omniauth.auth"]
+      @user = User.from_google_omniauth(auth_hash)
+      @user.google_token = auth_hash.credentials.token
+      refresh_token = auth_hash.credentials.refresh_token
+      @user.google_refresh_token = refresh_token if refresh_token.present?
+      if @user.save
+        session[:user_id] = @user.id
         redirect_to restaurants_path
       else
+        flash[:notice] = 'Username is already taken or registered using another social media account. Please try again.'
         redirect_to root_path
       end
+    end
+  end
+
+  def twitter_create
+    if auth_hash = request.env["omniauth.auth"]
+      @user = User.from_twitter_hash(auth_hash)
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to restaurants_path
+      else
+        flash[:notice] = @user.errors.full_message
+        redirect_to root_path
+      end
+    end
   end
 
   def create

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :username, presence: true
-  # validates :username, uniqueness: true
+  #validates :username, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
 
   def self.from_github_omniauth(auth)
@@ -18,15 +18,26 @@ class User < ActiveRecord::Base
      user.username = auth.info.name
      user.oauth_token = auth.credentials.token
      user.password = SecureRandom.hex
-     user.save!
    end
- end
-
- def self.from_google_omniauth(auth)
-  # Creates a new user only if it doesn't exist
-  where(email: auth.info.email).first_or_initialize do |user|
-    user.name = auth.info.name
-    user.email = auth.info.email
   end
- end
+
+  def self.from_google_omniauth(auth)
+    where(provider: auth.provider, email: auth.info.email).first_or_initialize do |user|
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.username = auth.info.name
+      user.password = SecureRandom.hex
+    end
+  end
+
+  def self.from_twitter_hash(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+      user.name = auth.info.nickname
+      user.profile_image = auth.info.image
+      user.token = auth.credentials.token
+      user.secret = auth.credentials.secret
+      user.username = auth.info.name
+      user.password = SecureRandom.hex
+    end
+  end
 end

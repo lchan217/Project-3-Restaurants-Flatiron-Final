@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get "/auth/:provider/callback", to: 'sessions#github_create'
+  get '/auth/github/callback', to: 'sessions#github_create'
+  get '/auth/google_oauth2/callback', to: 'sessions#google_create'
+  get '/auth/twitter/callback', to: 'sessions#twitter_create'
   get 'auth/failure', to: redirect('/')
-  get "auth/:provider/callback", to: 'sessions#google_create'
 
   get 'signout', to: 'sessions#destroy', as: 'signout'
   root to: 'sessions#home'
