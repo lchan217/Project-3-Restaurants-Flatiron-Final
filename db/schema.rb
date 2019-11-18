@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_025259) do
+ActiveRecord::Schema.define(version: 2019_11_18_010344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(version: 2019_11_17_025259) do
     t.string "provider"
     t.string "oauth_token"
     t.string "google_token"
-    t.string "google_refresh_toknn"
     t.string "token"
     t.string "secret"
     t.string "profile_image"
+    t.string "google_refresh_token"
   end
 
 end
