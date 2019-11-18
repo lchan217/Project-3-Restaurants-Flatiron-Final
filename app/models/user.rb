@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   def self.from_twitter_hash(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.name = auth.info.nickname
-      user.profile_image = auth.info.image
+      #user.profile_image = auth.info.image
       user.token = auth.credentials.token
       user.secret = auth.credentials.secret
       user.username = auth.info.name
