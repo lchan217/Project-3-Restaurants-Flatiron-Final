@@ -5,10 +5,13 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  #validates :username, presence: true
-  #validates :username, uniqueness: true
-  #validates :password, presence: true, length: { minimum: 6 }
+  validates :username, presence: true
+  validates :username, uniqueness: true
+  validates :password, presence: true, length: { minimum: 6 }
 
+  # links to views
+  # <%= link_to 'Twitter', '/auth/twitter' %> | <%= link_to 'Google', '/auth/google_oauth2' %>
+  
   def self.from_github_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
      user.email = auth.info.email
