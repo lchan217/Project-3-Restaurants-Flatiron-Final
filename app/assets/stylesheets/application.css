@@ -22,10 +22,6 @@
   background-color: rgb(255, 255, 255, 0.7);
 }
 
-h1 {
-  font-size: 3em;
-}
-
 .nav li {
   float: left;
 }
@@ -36,16 +32,16 @@ h1 {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font: 15px arial, sans-serif;
+  font-family: arial, sans-serif;
 }
 
 .wrapper {
   background-color: rgb(0, 0, 0, 0.2);
   color: white;
-  margin: 16px auto;
-  max-width: 1000px;
-  padding: 4%;
-  font: 15px arial, sans-serif;
+  margin: 0 auto;
+  width: 80%;
+  padding: 6em;
+  font-family: arial, sans-serif;
 }
 
 body {
@@ -55,7 +51,7 @@ body {
   background-attachment: fixed;
 }
 
-.button {
+/* .button {
   background-color: #f08080;
   color: white;
   padding: 15px 32px;
@@ -64,7 +60,7 @@ body {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-}
+} */
 
 a {
   color: white;
