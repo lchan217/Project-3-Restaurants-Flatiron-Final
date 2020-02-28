@@ -1,0 +1,11 @@
+input.login-button {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 0.2em 2em;
+  text-align: center;
+  display: inline-block;
+  font-size: 1em;
+  margin: 9px 2px;
+  cursor: pointer;
+}
