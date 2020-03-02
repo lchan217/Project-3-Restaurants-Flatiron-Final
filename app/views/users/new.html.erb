@@ -1,19 +1,18 @@
-<h1>Please sign up </h1>
-<% if flash[:notice] %>
-    <% flash[:notice].each do |message|%>
-      <%= message %><br>
-    <% end %>
-<% end %>
+<h1>Sign Up</h1>
+<div class='new-user-error'>
+  <% if flash[:notice] %>
+      <% flash[:notice].each do |message|%>
+        <%= message %><br>
+      <% end %>
+  <% end %>
+</div>
 
 <%= form_for @user, url: signup_path, method: :post do |f| %>
-   <%= f.label :name%>
-   <%= f.text_field :name %><br>
-
    <%= f.label :username%>
    <%= f.text_field :username %><br>
 
    <%= f.label :password%>
    <%= f.password_field :password %><br>
 
-   <%= f.submit %>
+   <%= f.submit "Sign Up", :class => 'sign-up-button'%>
 <% end %>
