@@ -1,0 +1,16 @@
+.new-user-error {
+  color: rgb(130, 251, 255);
+  font-size: 1.3em;
+}
+
+input.sign-up-button {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 0.2em 2em;
+  text-align: center;
+  display: inline-block;
+  font-size: 1em;
+  margin: 9px 2px;
+  cursor: pointer;
+}
