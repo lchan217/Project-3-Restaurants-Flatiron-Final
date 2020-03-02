@@ -1,10 +1,12 @@
 <h1>Welcome!</h1>
 <h3>Sign In: </h3>
 
-<% if flash[:notice] %>
-   <%= flash[:notice] %>
-<% end %>
-
+<div class='sign-in-error'> 
+   <% if flash[:notice] %>
+      <%= flash[:notice] %>
+   <% end %>
+</div>
+<br/>
 <%= form_for :user, url: '/login', method: :post do |f| %>
    <%= f.label :username%>
    <%= f.text_field :username %><br>
