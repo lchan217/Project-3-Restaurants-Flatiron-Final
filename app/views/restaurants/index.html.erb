@@ -1,19 +1,15 @@
-<br><br><br><br>
-<div style="color: white">
-  <h4>Welcome <%= current_user.username %>! You are successfully logged in.</h4>
-  <h3><i>Please note you are only able to add, edit, or delete if restaurants or items are under your account</i></h3>
+<h2>Welcome <span class="blue"><%= current_user.username %>!</span> You are successfully logged in.</h2>
+<i>Please note you are only able to add, edit, or delete if restaurants or items are under your account</i>
 
-  <h1>My Restaurants</h1>
-  <ol>
-  <% @restaurants.each do |r| %>
-    <li><h3><%= link_to r.name, restaurant_path(r) %> - <%= r.locations.first.state %>
-      <div class="itemNames-<%=r.id%> "></div>
-      <button class="show" data-id="<%= r.id %>">Show Menu Items </button>
-      <button class="hide" data-id="<%= r.id %>">Hide Menu Items </button>
-    </li>
+<% @restaurants.each do |r| %>
+  <div>
+  <span class='rest-name'><%=link_to r.name, restaurant_path(r) %> - <%= r.locations.first.state %></span>
+    <div class="itemNames-<%=r.id%> rest-items"></div>
+    <button class="show" data-id="<%= r.id %>">Show Menu Items </button>
+    <button class="hide" data-id="<%= r.id %>">Hide Menu Items </button>
+  </div>
+  <br/>
+<% end %>
 
-  <% end %>
-  </ol>
-  <br>
-  <%= button_to "Create New Restaurant", new_restaurant_path, method: :get%><br>
-</div>
+<%= button_to "Create New Restaurant", new_restaurant_path, method: :get, :class => 'new-rest-button'%><br>
+  

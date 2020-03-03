@@ -1,0 +1,39 @@
+.blue {
+  color: rgb(130, 251, 255);
+}
+
+input.new-rest-button {
+  background-color: rgb(130, 251, 255);
+  border: none;
+  color: black;
+  text-align: center;
+  padding: 0.2em 2em;
+  display: inline-block;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.show {
+  background-color: greenyellow;
+  text-align: center;
+  display: inline-block;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.hide {
+  background-color: rgb(235, 181, 181);
+  text-align: center;
+  display: inline-block;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.rest-name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.rest-items {
+  font-size: 1.2em;
+}
