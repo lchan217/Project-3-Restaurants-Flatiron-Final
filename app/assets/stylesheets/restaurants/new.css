@@ -1,0 +1,10 @@
+input.new-rest-button {
+  background-color: blue;
+  border: none;
+  color: white;
+  text-align: center;
+  padding: 0.2em 2em;
+  display: inline-block;
+  font-size: 1em;
+  cursor: pointer;
+}
