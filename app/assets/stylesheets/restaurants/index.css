@@ -3,9 +3,9 @@
 }
 
 input.new-rest-button {
-  background-color: rgb(130, 251, 255);
+  background-color: blue;
   border: none;
-  color: black;
+  color: white;
   text-align: center;
   padding: 0.2em 2em;
   display: inline-block;

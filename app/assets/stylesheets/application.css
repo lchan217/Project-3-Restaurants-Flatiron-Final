@@ -26,6 +26,10 @@
   float: left;
 }
 
+.nav li:hover {
+  background-color: rgb(130, 251, 255);
+}
+
 .nav li a {
   display: block;
   color: black;

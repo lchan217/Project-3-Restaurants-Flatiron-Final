@@ -1,6 +1,6 @@
 <h2>Welcome <span class="blue"><%= current_user.username %>!</span> You are successfully logged in.</h2>
 <i>Please note you are only able to add, edit, or delete if restaurants or items are under your account</i>
-
+<br/>
 <% @restaurants.each do |r| %>
   <div>
   <span class='rest-name'><%=link_to r.name, restaurant_path(r) %> - <%= r.locations.first.state %></span>
