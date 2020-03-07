@@ -12,10 +12,10 @@
   <li>Comments: <%=@restaurant.comment %> </li>
   <li>Menu Items: <% @restaurant.items.each do |i| %>
     <ul>
-      <li><%= i.name %> - <a href="#" class="js-item-detail" data-id="<%= i.id %>" rest-id="<%= @restaurant.id %>">See More Detail</a>
+      <li><%= i.name %> <a href="#" class="js-item-detail" data-id="<%= i.id %>" rest-id="<%= @restaurant.id %>"><%= fa_icon "info-circle" %></a>
         <% if current_user.id == @restaurant.locations.first.user_id %>
-          - <%= link_to "Edit Item", edit_restaurant_item_path(@restaurant, i) %>  -
-          <%= link_to "Delete Item", restaurant_item_path(@restaurant, i), method: :delete%>  </li>
+          <%= link_to "#{fa_icon "edit"}".html_safe, edit_restaurant_item_path(@restaurant, i) %>
+          <%= link_to "#{fa_icon "trash"}".html_safe, restaurant_item_path(@restaurant, i), method: :delete%>  </li>
           <% end %>
         <div class="itemVeg-<%=i.id%>"></div>
         <div class="itemCalories-<%=i.id%>"></div>
@@ -26,9 +26,9 @@
 </ul>
 
 <% if current_user.id == @restaurant.locations.first.user_id %>
-  <%= link_to "#{fa_icon "plus"}".html_safe + " Item", new_restaurant_item_path(@restaurant), class: "rest-show-link" %><br>
+   <%= link_to "#{fa_icon "plus"}".html_safe + " Item", new_restaurant_item_path(@restaurant), class: "rest-show-link" %><br>
   <%= link_to "#{fa_icon "edit"}".html_safe + " Restaurant", edit_restaurant_path(@restaurant), class: "rest-show-link"  %><br>
   <%= link_to "#{fa_icon "trash"}".html_safe + " Restaurant", restaurant_path(@restaurant), method: :delete, class: "rest-show-link" %><br>
- <% end %>
+<% end %>
 
-<%= link_to "#{fa_icon "undo"}".html_safe + " All Restaurants", restaurants_path, class: "rest-show-link"   %><br>
+ <%= link_to "#{fa_icon "undo"}".html_safe + " All Restaurants", restaurants_path, class: "rest-show-link"   %>
