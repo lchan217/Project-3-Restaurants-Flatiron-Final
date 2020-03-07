@@ -1,4 +1,4 @@
-<h1><i>Please edit this restaurant</i></h1>
+<h1><i>Please enter your updates</i></h1>
 
 <% if @restaurant.errors.any? %>
      <h2>Unfortunately, there were some errors. Please try again. </h2>
@@ -33,7 +33,7 @@
 <%= f.text_field :rating %> <br>
 
 <%= f.label :comment %>
-<%= f.text_field :comment %> <br>
+<%= f.text_field :comment %> <br><br>
 
-<%= f.submit %>
+<%= f.submit "Submit", :class => 'submit-button'%>
 <% end %>

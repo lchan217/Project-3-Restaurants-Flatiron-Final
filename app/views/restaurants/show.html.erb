@@ -27,8 +27,8 @@
 
 <% if current_user.id == @restaurant.locations.first.user_id %>
   <%= link_to "#{fa_icon "plus"}".html_safe + " Item", new_restaurant_item_path(@restaurant), class: "rest-show-link" %><br>
-  <%= link_to "#{fa_icon "edit"}".html_safe + " Restaurant", edit_restaurant_path(@restaurant), class: "rest-show-link"  %><br>
-  <%= link_to "#{fa_icon "trash"}".html_safe + " Restaurant", restaurant_path(@restaurant), method: :delete, class: "rest-show-link" %><br>
+  <%= link_to "#{fa_icon "edit"}".html_safe + " " +@restaurant.name, edit_restaurant_path(@restaurant), class: "rest-show-link"  %><br>
+  <%= link_to "#{fa_icon "trash"}".html_safe + " " +@restaurant.name, restaurant_path(@restaurant), method: :delete, class: "rest-show-link" %><br>
 <% end %>
 
  <%= link_to "#{fa_icon "undo"}".html_safe + " All Restaurants", restaurants_path, class: "rest-show-link"   %>

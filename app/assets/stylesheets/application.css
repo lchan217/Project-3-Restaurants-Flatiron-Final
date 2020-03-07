@@ -60,6 +60,17 @@ body {
   font-size: 17px;
 }
 
+input.submit-button {
+  background-color: blue;
+  border: none;
+  color: white;
+  text-align: center;
+  padding: 0.2em 2em;
+  display: inline-block;
+  font-size: 1em;
+  cursor: pointer;
+}
+
 /* .button {
   background-color: #f08080;
   color: white;
