@@ -54,4 +54,4 @@
 <div id="restResult">
 </div>
 
-<br><%= link_to "Back to My Restaurants", restaurants_path %> | <%= link_to "Create a New Restaurant", new_restaurant_path %>
+<br> <%= link_to "#{fa_icon "undo"}".html_safe + " All Restaurants", restaurants_path, class: "rest-show-link"   %>
