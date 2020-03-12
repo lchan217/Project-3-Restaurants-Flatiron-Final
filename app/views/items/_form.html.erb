@@ -24,6 +24,6 @@
   <%= f.select :category, options_for_select(["", "Beverage", "Main Meal", "Snack", "Appetizer", "Side", "Dessert"], item.category)%> <br>
 
   <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
-
-  <%= f.submit %>
+  <br>
+  <%= f.submit "Submit", :class => 'submit-button' %>
 <% end %>

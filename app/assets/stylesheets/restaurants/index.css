@@ -2,30 +2,19 @@
   color: rgb(130, 251, 255);
 }
 
-input.submit-button {
-  background-color: blue;
-  border: none;
-  color: white;
-  text-align: center;
-  padding: 0.2em 2em;
-  display: inline-block;
-  font-size: 1em;
-  cursor: pointer;
-}
-
 .show {
-  background-color: greenyellow;
+  background-color: rgb(220, 220, 220);
   text-align: center;
   display: inline-block;
-  font-size: 1em;
+  font-size: 0.8em;
   cursor: pointer;
 }
 
 .hide {
-  background-color: rgb(235, 181, 181);
+  background-color: rgb(220, 220, 220);
   text-align: center;
   display: inline-block;
-  font-size: 1em;
+  font-size: 0.8em;
   cursor: pointer;
 }
 
