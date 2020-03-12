@@ -1,16 +1,14 @@
-<h2>List of All Restaurants in the Database</h2>
-<h4><u>Search by State:</u></h4>
+<h1>All Restaurants in the Database</h1>
+<h2 ><u>Search State:</u></h2>
 
 <%= form_tag all_restaurants_in_database_path, method: :get do %>
-  <p>
+  <p class='search'>
     Enter State: <%= text_field_tag :query_search %>
 
     OR Select Existing State:
 
     <%=select_tag :query_existing, options_from_collection_for_select(Location.options, :state, :state, :state), prompt: "Please Select"%>
-    <br><br> <%= button_to "Search State"%>
-    <br>
-
+    &nbsp &nbsp &nbsp<%= button_to "Search State", {}, {class: 'search-state'}%>
     <%= button_to "Clear Filter", all_restaurants_in_database_path, method: :get%>
   </p>
 <% end %>
@@ -21,8 +19,8 @@
       <ul>
         <li><%=link_to l.restaurant.name, restaurant_path(l.restaurant)%> - <%= l.city_and_state %> </li>
         <div class="itemNames-<%=l.restaurant.id%> "></div><br>
-        <button class="show" data-id="<%= l.restaurant.id %>">Show Menu Items </button>
-        <button class="hide" data-id="<%= l.restaurant.id %>">Hide Menu Items </button>
+        <button class="show" data-id="<%= l.restaurant.id %>">Show Menu</button>
+        <button class="hide" data-id="<%= l.restaurant.id %>">Hide Menu</button>
       </ul>
     <% end %>
   <% end %>

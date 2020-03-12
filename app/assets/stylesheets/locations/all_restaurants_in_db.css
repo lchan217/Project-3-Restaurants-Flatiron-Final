@@ -1,0 +1,10 @@
+.search {
+  font-size: 1.2em;
+}
+
+input.search-state {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 0.2em 2em;
+}

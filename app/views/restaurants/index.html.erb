@@ -5,8 +5,8 @@
   <div>
   <span class='rest-name'><%=link_to r.name, restaurant_path(r) %> - <%= r.locations.first.state %></span>
     <div class="itemNames-<%=r.id%> rest-items"></div>
-    <button class="show" data-id="<%= r.id %>">Show Menu Items </button>
-    <button class="hide" data-id="<%= r.id %>">Hide Menu Items </button>
+    <button class="show" data-id="<%= r.id %>">Show Menu</button>
+    <button class="hide" data-id="<%= r.id %>">Hide Menu</button>
   </div>
   <br>
 <% end %>
