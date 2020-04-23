@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
   end
 
   def self.from_twitter_hash(auth)
-    byebug
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.name = auth.info.nickname
       user.profile_image = auth.info.image

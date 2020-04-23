@@ -37,7 +37,6 @@ class SessionsController < ApplicationController
   end
 
   def twitter_create
-    byebug
     if auth_hash = request.env["omniauth.auth"]
       @user = User.from_twitter_hash(auth_hash)
       if @user.save
