@@ -39,10 +39,7 @@ class SessionsController < ApplicationController
   def twitter_create
     if auth_hash = request.env["omniauth.auth"]
       @user = User.from_twitter_hash(auth_hash)
-      if @user 
-        session[:user_id] = @user.id
-        redirect_to restaurants_path
-      else if @user.save
+      if @user.save
         session[:user_id] = @user.id
         redirect_to restaurants_path
       else
