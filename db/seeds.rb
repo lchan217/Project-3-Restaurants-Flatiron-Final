@@ -38,7 +38,7 @@ chocolate= Item.create(name: "Chocolate Cake Shake", vegetarian: "Yes", calories
 fries= Item.create(name: "Cheese Fries" , vegetarian: "Yes", calories: "520", price: "$3", category:"Side")
 portillos.items << [hotdog, chocolate, fries]
 
-lizzie = User.create(name: "Lizzie", username: "Lizzie", password: "Lizzie")
+lizzie = User.create(name: "Eliza", username: "Eliza", password: "Eliza")
 Location.all.each do |l|
   lizzie.locations << l
 end
