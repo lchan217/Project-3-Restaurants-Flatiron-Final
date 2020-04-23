@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   # links to views
   # <%= link_to 'Twitter', '/auth/twitter' %> | <%= link_to 'Google', '/auth/google_oauth2' %>
+  # Click  <%= link_to 'here', '/auth/github' %> to log in with Github <%= fa_icon "github" %>
   
   def self.from_github_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
@@ -34,6 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def self.from_twitter_hash(auth)
+    byebug
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.name = auth.info.nickname
       user.profile_image = auth.info.image
