@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
       user.profile_image = auth.info.image
       user.token = auth.credentials.token
       user.secret = auth.credentials.secret
-      user.username = auth.info.name
+      user.username = auth.info.nickname
       user.password = SecureRandom.hex
     end
   end
