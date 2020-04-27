@@ -3,5 +3,9 @@
 
 <div id="itemResult">
 </div>
-<br>
-<%= link_to "Back to Restaurant", restaurant_path(@restaurant) %> | <%= link_to "Create Another Item", new_restaurant_item_path(@restaurant) %> | <%= link_to "Back to All Restaurants", restaurants_path %>
+
+<% if current_user.id == @restaurant.locations.first.user_id %>
+<br> <%= link_to "#{fa_icon "undo"}".html_safe + " " +@restaurant.name, restaurant_path(@restaurant), class: "rest-show-link"   %>
+  <br><%= link_to "#{fa_icon "plus"}".html_safe + " Another Item", new_restaurant_item_path(@restaurant), class: "rest-show-link" %><br>
+  <%= link_to "#{fa_icon "undo"}".html_safe + " All Restaurants", restaurants_path, class: "rest-show-link"   %>
+<% end %>
